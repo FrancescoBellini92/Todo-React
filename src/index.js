@@ -1,10 +1,36 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {createStore, applyMiddleware, compose} from 'redux';
+import {Provider} from 'react-redux';
+import logger from 'redux-logger';
+import promise from 'redux-promise-middleware';
+import storeReducer from './reducers/index';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+function loadToDoList() {
+    /*
+    if (localStorage.getItem('todoList')) {
+        return JSON.parse(localStorage.getItem('todoList'));
+    }*/
+    return [];
+}
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(storeReducer, {filter: {activeFilter: null}, todos: loadToDoList()}, 
+    composeEnhancers(applyMiddleware(logger, promise)));
+/*
+store.subscribe( () => {
+    localStorage.setItem('todoList', JSON.stringify(store.getState().todos));
+})
+*/
+
+ReactDOM.render(
+<Provider store={store}>
+    <App />
+</Provider>, 
+document.getElementById('root')
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

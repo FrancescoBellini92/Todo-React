@@ -1,0 +1,40 @@
+{
+  "todos": [
+    {
+      "id": "0",
+      "title": "todo1",
+      "description": "blablablabla",
+      "state": "deleted"
+    },
+    {
+      "id": 1,
+      "title": "todo2",
+      "description": "blablablabla",
+      "state": "deleted"
+    },
+    {
+      "id": 2,
+      "title": "todo3",
+      "description": "blablablabla",
+      "state": "completed"
+    },
+    {
+      "title": "todo4",
+      "state": "deleted",
+      "id": 3
+    },
+    {
+      "title": "todo5",
+      "state": "completed",
+      "id": 4
+    },
+    {
+      "title": "todo6",
+      "state": "completed",
+      "id": 5
+    }
+  ],
+  "filter": {
+    "activeFilter": null
+  }
+}
