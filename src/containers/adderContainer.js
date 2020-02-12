@@ -1,13 +1,7 @@
 import Adder from '../components/Adder';
 import {connect} from 'react-redux';
-import {addTodo} from '../actions/index';
-/*
-const mapDispatchToProps = (dispatch) => {
-    return ({
-        addTodo: (todo) => {dispatch(addTodo(todo))}
-    });
+import {addTodo, addList} from '../actions/index';
 
-}
-export const adderContainer = connect(null, mapDispatchToProps)(Adder);
-*/
-export const adderContainer = connect(null, {addTodo})(Adder);
+
+export const todoAdderContainer = connect(null, {addFunc: addTodo})(Adder);
+export const listAdderContainer = connect(null, {addFunc: addList})(Adder);

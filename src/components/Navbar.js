@@ -1,4 +1,5 @@
 import React from 'react';
+import {NavLink} from 'react-router-dom';
 
 export default function navBar({onClick}) {
     return (
@@ -10,6 +11,23 @@ export default function navBar({onClick}) {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul className="navbar-nav mx-auto">
+        <li className="nav-item">
+        <NavLink exact className="nav-link" activeClassName="active" to="/">HOME</NavLink>
+      </li>
+      <li className="nav-item ">
+        <NavLink className="nav-link" activeClassName="active" to="/lists">LISTS </NavLink>
+      </li>
+      <li className="nav-item">
+        <NavLink className="nav-link" activeClassName="active" to="/todos">TODOS </NavLink>
+      </li>
+      <li className="nav-item">
+        <NavLink className="nav-link" activeClassName="active" to="/signup">SIGNUP </NavLink>
+      </li>
+      <li className="nav-item">
+        <NavLink className="nav-link" activeClassName="active" to="/login">LOGIN</NavLink>
+      </li>
+    </ul>
         </div>
       </nav>
     )

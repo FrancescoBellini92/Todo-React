@@ -1,15 +1,17 @@
 import React from 'react';
-export default function adder({addTodo}) {
-  let toDoInput;
+import PropTypes from 'prop-types';
+
+export default function adder({addFunc, list}) {
+  let input;
     return (
       <div className="input-group my-2">
-        <input className="form-control" ref={ node => {toDoInput = node}}
-        onKeyUp={e => { if(e.keyCode === 13) {addTodo(toDoInput.value)}}} />
+        <input className="form-control" ref={ node => {input = node}}
+        onKeyUp={e => { if(e.keyCode === 13) {addFunc(input.value)}}} />
         <div className="input-group-append">
           <button className="btn btn-outline-secondary" type="button" onClick={
             () => {
-              addTodo(toDoInput.value)
-              toDoInput.value = '';
+              addFunc(input.value, list)
+              input.value = '';
             }}>
               Add
             </button>
@@ -17,3 +19,7 @@ export default function adder({addTodo}) {
     </div>
     )
   }
+
+adder.propTypes = {
+  addTodo: PropTypes.func
+}

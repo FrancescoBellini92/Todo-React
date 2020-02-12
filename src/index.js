@@ -5,29 +5,38 @@ import {Provider} from 'react-redux';
 import logger from 'redux-logger';
 import promise from 'redux-promise-middleware';
 import storeReducer from './reducers/index';
+import {BrowserRouter} from 'react-router-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 function loadToDoList() {
-    /*
+    
     if (localStorage.getItem('todoList')) {
-        return JSON.parse(localStorage.getItem('todoList'));
-    }*/
-    return [];
+        const currentState = JSON.parse(localStorage.getItem('todoList'));
+        if (currentState.error.hasError) {
+            return([]) 
+        } 
+        return({...currentState});
+    }
+    return {filter: {activeFilter: null}, error: {hasError: false, errorMessage: ''}, todos: [], lists:[]} ;
 }
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(storeReducer, {filter: {activeFilter: null}, todos: loadToDoList()}, 
+const store = createStore(storeReducer, loadToDoList(), 
     composeEnhancers(applyMiddleware(logger, promise)));
-/*
+
 store.subscribe( () => {
-    localStorage.setItem('todoList', JSON.stringify(store.getState().todos));
+    if (!store.getState().error.hasError) {
+        localStorage.setItem('todoList', JSON.stringify(store.getState()));
+    }
 })
-*/
+
 
 ReactDOM.render(
 <Provider store={store}>
-    <App />
+    <BrowserRouter>
+        <App />
+    </BrowserRouter>
 </Provider>, 
 document.getElementById('root')
 );

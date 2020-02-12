@@ -1,2 +1,4 @@
-export const APIURL = ' http://localhost:3004/todos';
-export const APIFILTERURL = ' http://localhost:3004/filter';
+const LARAVELURL = 'http://react-todo-app.test';
+export const APIURL = LARAVELURL + '/todos';
+export const APIFILTERURL = LARAVELURL +'/filter';
+export const APILISTSURL = LARAVELURL +'/todolist';
