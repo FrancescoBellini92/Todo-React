@@ -6,12 +6,15 @@ export default function lists ({lists, removeList, error}) {
     if (error.hasError) {
         throw new Error(error.errorMessage)
     }
-   
-   return (
-       <div className="container">
-        <ListAdderContainer />
-            <ul className="list-group">
-                {lists.map( (item, index) => <List key={item.id} onRemove={ () => { removeList(item.id)}} name={item.name} id={item.id}/>)}
-            </ul>
-        </div>);
+
+    return (
+    <div className="container">
+    <ListAdderContainer />
+        <ul className="list-group">
+            {lists.map( (item) => <List key={item.id} onRemove={ () => { 
+                removeList(item.id)}} name={item.name} id={item.id}/>
+                )}
+        </ul>
+    </div>
+    );
 }

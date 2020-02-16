@@ -1,14 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
 import {createStore, applyMiddleware, compose} from 'redux';
 import {Provider} from 'react-redux';
+
+import {BrowserRouter} from 'react-router-dom';
+
 import logger from 'redux-logger';
 import promise from 'redux-promise-middleware';
+
 import storeReducer from './reducers/index';
-import {BrowserRouter} from 'react-router-dom';
-import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+
+import './index.css';
+
 
 function loadToDoList() {
     
@@ -19,7 +25,17 @@ function loadToDoList() {
         } 
         return({...currentState});
     }
-    return {filter: {activeFilter: null}, error: {hasError: false, errorMessage: ''}, todos: [], lists:[]} ;
+    return {
+        filter: {
+            activeFilter: null
+        }, 
+        error: {
+            hasError: false, 
+            errorMessage: ''
+        }, 
+        todos: [], 
+        lists:[]
+    };
 }
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(storeReducer, loadToDoList(), 
@@ -41,7 +57,4 @@ ReactDOM.render(
 document.getElementById('root')
 );
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();

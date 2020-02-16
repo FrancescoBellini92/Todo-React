@@ -1,9 +1,9 @@
 import React from 'react';
-import Item from './Item';
+import Todo from './todo';
 import PropTypes from 'prop-types';
 import {todoAdderContainer as TodoAdderContainer} from  '../containers/adderContainer';
 
-export default class AllToDo extends React.Component {
+export default class AllTodo extends React.Component {
   constructor (props) {
     super(props);
     if (props.hasError) {
@@ -20,7 +20,7 @@ export default class AllToDo extends React.Component {
       this.props.getTodo(this.props.list);
     }
   }
-  
+
   render () {
     const listId = this.props.match.params.list || 0;
     const listName = this.props.location.state ? this.props.location.state.name : null;
@@ -29,14 +29,14 @@ export default class AllToDo extends React.Component {
         <h3 className="text-center"> {listName}</h3>
         <TodoAdderContainer list={listId} />
         <ul className="list-group">
-             {this.props.items.map( (item, index) => <Item onComplete={() => {this.props.completeTodo(item)}} 
+             {this.props.items.map( (item) => <Todo onComplete={() => {this.props.completeTodo(item)}} 
             onRemove={ () => {this.props.removeTodo(item.id)}} key={item.id} item={item}/>)}
         </ul>
     </div>);
   }
 }
   
-AllToDo.propTypes = {
+AllTodo.propTypes = {
     removeTodo: PropTypes.func.isRequired,
     completeTodo: PropTypes.func.isRequired,
     getTodos: PropTypes.func.isRequired,

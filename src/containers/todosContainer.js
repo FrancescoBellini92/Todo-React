@@ -1,8 +1,6 @@
-import AllToDo from '../components/allTodo';
+import Todos from '../components/todos';
 import {connect} from 'react-redux';
 import {removeTodo, completeTodo, getTodo} from '../actions/index';
-
-
 
 function mapStateToProps({todos, filter, error}) {
     return ({ items: [...todos.filter( (item,index) => {
@@ -13,4 +11,5 @@ function mapStateToProps({todos, filter, error}) {
     })],
     error
 })}
-export const allTodoContainer = connect(mapStateToProps, {removeTodo, completeTodo, getTodo})(AllToDo);
+
+export const todosContainer = connect(mapStateToProps, {removeTodo, completeTodo, getTodo})(Todos);

@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function item({onRemove, onComplete, item}) {
+export default function todo({onRemove, onComplete, todo}) {
     let returnedClassCheck ;
-    item.completed ? returnedClassCheck = "btn btn-success" : returnedClassCheck = "btn btn-outline-success";
+    todo.completed ? returnedClassCheck = "btn btn-success" : returnedClassCheck = "btn btn-outline-success";
     return (
-      <li className="list-group-item ">
+      <li className="list-group-todo ">
         <div className="input-group mb-3">
-          <input className="form-control" type="text" defaultValue={item.todo} />
+          <input className="form-control" type="text" defaultValue={todo.todo} />
           <div className="input-group-append">
             <button className={returnedClassCheck} onClick={onComplete}>
               <span role="img">&#x2713;</span>
@@ -21,11 +21,11 @@ export default function item({onRemove, onComplete, item}) {
     );
   }
 
-  item.propTypes = {
+  todo.propTypes = {
     onRemove: PropTypes.func.isRequired,
     onComplete: PropTypes.func.isRequired,
-    item: PropTypes.shape( {
-      state: PropTypes.string.isRequired,
+    todo: PropTypes.shape( {
+      completed: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired
     })
   };

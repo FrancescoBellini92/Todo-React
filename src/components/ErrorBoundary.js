@@ -25,6 +25,5 @@ export default class ErrorBoundary extends React.Component {
             return (<div className="alert alert-danger text-center">An error emerged: {this.state.errorMessage}</div>);
         }
         return this.props.children;
-        
     }
 }
