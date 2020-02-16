@@ -8,12 +8,12 @@ export default function listReducer (state = [], action) {
         return state;
       case `${ADD_LIST}_FULFILLED`:
         state = [
-          action.payload.data.result.data,
+          action.payload.data.result,
           ...state
         ];
         return state;
       case `${REMOVELIST}_FULFILLED`:
-        return state.filter(item => item.id !== action.payload.config.id);
+        return state.filter(list => list.id !== action.payload.config.id);
       default:
         return state;
     }  

@@ -3,28 +3,43 @@ import Item from './Item';
 import PropTypes from 'prop-types';
 import {todoAdderContainer as TodoAdderContainer} from  '../containers/adderContainer';
 
-export default function allToDo({removeTodo, completeTodo, items, error, match, location}) {
-    if (error.hasError) {
-        throw new Error(error.errorMessage)
+export default class AllToDo extends React.Component {
+  constructor (props) {
+    super(props);
+    if (props.hasError) {
+      throw new Error(props.error.errorMessage)
     }
-    const listId = match.params.list || 1;
-    const listName = location.state ? location.state.name : null;
+  }
+
+  componentWillMount() {
+    this.props.getTodo(this.props.match.params.list)
+  }
+
+  componentDidUpdate(prevProps) {
+    if(this.props.list !== prevProps.list) {
+      this.props.getTodo(this.props.list);
+    }
+  }
+  
+  render () {
+    const listId = this.props.match.params.list || 0;
+    const listName = this.props.location.state ? this.props.location.state.name : null;
     return (
       <div className="container">
         <h3 className="text-center"> {listName}</h3>
         <TodoAdderContainer list={listId} />
         <ul className="list-group">
-            {items.filter(item => item.list_id == listId).map( (item, index) => <Item onComplete={() => {completeTodo(item)}} 
-            onRemove={ () => {removeTodo(item.id)}} key={item.id} item={item}/>)}
-             {items.map( (item, index) => <Item onComplete={() => {completeTodo(item)}} 
-            onRemove={ () => {removeTodo(item.id)}} key={item.id} item={item}/>)}
+             {this.props.items.map( (item, index) => <Item onComplete={() => {this.props.completeTodo(item)}} 
+            onRemove={ () => {this.props.removeTodo(item.id)}} key={item.id} item={item}/>)}
         </ul>
     </div>);
   }
+}
   
-  allToDo.propTypes = {
+AllToDo.propTypes = {
     removeTodo: PropTypes.func.isRequired,
     completeTodo: PropTypes.func.isRequired,
+    getTodos: PropTypes.func.isRequired,
     items: PropTypes.array.isRequired,
     error: PropTypes.shape({
       hasError: PropTypes.bool,
