@@ -16,7 +16,7 @@ export default function list ({name, id, onRemove}) {
         </Link>
           <div className="input-group-append">
           <button onClick={onRemove} className="btn btn-outline-danger">
-            <span role="img">&#x274c;</span>
+            <span role="img" aria-label="delete list">&#x274c;</span>
           </button>
           </div>
         </div>

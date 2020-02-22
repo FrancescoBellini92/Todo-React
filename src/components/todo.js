@@ -5,15 +5,15 @@ export default function todo({onRemove, onComplete, todo}) {
     let returnedClassCheck ;
     todo.completed ? returnedClassCheck = "btn btn-success" : returnedClassCheck = "btn btn-outline-success";
     return (
-      <li className="list-group-todo ">
+      <li className="list-group">
         <div className="input-group mb-3">
           <input className="form-control" type="text" defaultValue={todo.todo} />
           <div className="input-group-append">
             <button className={returnedClassCheck} onClick={onComplete}>
-              <span role="img">&#x2713;</span>
+              <span role="img" aria-label="confirm todo">&#x2713;</span>
               </button>
             <button className="btn btn-outline-danger" onClick={onRemove}>
-              <span role="img"> &#x274c; </span>
+            <span role="img" aria-label="delete todo">&#x274c;</span>
             </button>
           </div>
         </div>
@@ -26,6 +26,6 @@ export default function todo({onRemove, onComplete, todo}) {
     onComplete: PropTypes.func.isRequired,
     todo: PropTypes.shape( {
       completed: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired
+      todo: PropTypes.string.isRequired
     })
   };

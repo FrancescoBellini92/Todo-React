@@ -2,16 +2,17 @@ import React from 'react';
 
 import {connect} from 'react-redux';
 
-import {Route} from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
+
+import {getTodo, getFilter, getLists} from './actions/index';
 
 import Navbar from './components/navbar';
 import ErrorBoundary from './components/ErrorBoundary';
 
 import {todosContainer as TodosContainer} from './containers/todosContainer';
 import {listsContainer as ListsContainer} from './containers/listsContainer';
-import {footerContainer as FooterContainer} from './containers/FooterContainer';
-
-import {getTodo, getFilter, getLists} from './actions/index';
+import {footerContainer as FooterContainer} from './containers/footerContainer';
+import Login from './components/login';
 
 class App extends React.Component {
   componentDidMount() {
@@ -21,19 +22,24 @@ class App extends React.Component {
 
   render () {
     return (
-      <div className="App">
+      <React.Fragment>
         <header>
-        <Navbar/>
+          <Navbar/>
         </header>
         <main className="container mb-5 pb-5"> 
           <ErrorBoundary>
-            <Route  path ="/lists/:list/todos" exact component={TodosContainer}  />
-            <Route  path ="/lists" exact component={ListsContainer}  />
-            <Route  path ="/todos" exact component={TodosContainer}  />
+            <Switch>
+              <Route  path ="/lists/:list/todos" component={TodosContainer}  />
+              <Route  path ="/lists" component={ListsContainer} />
+              <Route  path ="/todos" component={TodosContainer} />
+              <Route  path ="/login" component={Login} />
+            </Switch>
           </ErrorBoundary>
-          <FooterContainer />
         </main>
-      </div>
+        <footer>
+          <FooterContainer />
+        </footer>
+      </React.Fragment>
     );
   }
 }

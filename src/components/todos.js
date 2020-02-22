@@ -3,7 +3,7 @@ import Todo from './todo';
 import PropTypes from 'prop-types';
 import {todoAdderContainer as TodoAdderContainer} from  '../containers/adderContainer';
 
-export default class AllTodo extends React.Component {
+export default class Todos extends React.Component {
   constructor (props) {
     super(props);
     if (props.hasError) {
@@ -11,7 +11,7 @@ export default class AllTodo extends React.Component {
     }
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.getTodo(this.props.match.params.list)
   }
 
@@ -29,17 +29,17 @@ export default class AllTodo extends React.Component {
         <h3 className="text-center"> {listName}</h3>
         <TodoAdderContainer list={listId} />
         <ul className="list-group">
-             {this.props.items.map( (item) => <Todo onComplete={() => {this.props.completeTodo(item)}} 
-            onRemove={ () => {this.props.removeTodo(item.id)}} key={item.id} item={item}/>)}
+             {this.props.todos.map( (todo) => <Todo onComplete={() => {this.props.completeTodo(todo)}} 
+            onRemove={ () => {this.props.removeTodo(todo.id)}} key={todo.id} todo={todo}/>)}
         </ul>
     </div>);
   }
 }
   
-AllTodo.propTypes = {
+Todos.propTypes = {
     removeTodo: PropTypes.func.isRequired,
     completeTodo: PropTypes.func.isRequired,
-    getTodos: PropTypes.func.isRequired,
+    getTodo: PropTypes.func.isRequired,
     items: PropTypes.array.isRequired,
     error: PropTypes.shape({
       hasError: PropTypes.bool,

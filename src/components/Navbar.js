@@ -12,9 +12,6 @@ export default function navBar({onClick}) {
         </button>
         <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
           <ul className="navbar-nav mx-auto">
-            <li className="nav-item">
-            <NavLink exact className="nav-link" activeClassName="active" to="/">HOME</NavLink>
-          </li>
           <li className="nav-item ">
             <NavLink className="nav-link" activeClassName="active" to="/lists">LISTS </NavLink>
           </li>
@@ -22,10 +19,10 @@ export default function navBar({onClick}) {
             <NavLink className="nav-link" activeClassName="active" to="/todos">TODOS </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" activeClassName="active" to="/signup">SIGNUP </NavLink>
+            <NavLink className="nav-link" activeClassName="active" to="/login">LOGIN</NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" activeClassName="active" to="/login">LOGIN</NavLink>
+            <NavLink className="nav-link" activeClassName="active" to="/signup">SIGNUP </NavLink>
           </li>
         </ul>
       </div>

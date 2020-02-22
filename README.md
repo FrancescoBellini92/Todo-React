@@ -11,5 +11,6 @@ This is still a work in progress project
 
 ## For cloning the repo
 After cloning the repository, run npm install to install all required dependencies.
+
 Running "npm start" will start the front end 
 
