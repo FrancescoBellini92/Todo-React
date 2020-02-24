@@ -1,11 +1,17 @@
 import React, {useState, useEffect} from 'react';
+import Auth from '../auth/auth';
 
 export default function Login() {
     const [email, setEmail] = useState("");
-    const [pwd, setPwd] = useState("");
+    const [password, setPassword] = useState("");
 
     const loginAction = (e) => {
         e.preventDefault();
+        Auth.signin(email, password)
+        .then(payload => {
+            console.log(payload.access_token);
+        })
+
     }
 
     return (
@@ -16,7 +22,7 @@ export default function Login() {
             onChange={ e => setEmail(e.target.value)} autofocus/>
             <label for="inputPassword" className="sr-only">Password</label>
             <input type="password" id="inputPassword" className="form-control mt-1" placeholder="Password" 
-             onChange={ e => setPwd(e.target.value)} required/>
+             onChange={ e => setPassword(e.target.value)} required/>
             <div className="checkbox my-2">
                 <label>
                 <input type="checkbox" value="remember-me"/> Remember me
