@@ -5,7 +5,7 @@ function auth( ) {
     const getToken =  () => {
         const auth = JSON.parse(localStorage.getItem('auth'));
         if (auth) {
-            return auth.acees_token;
+            return auth.access_token;
         } 
     }
 
@@ -47,11 +47,20 @@ function auth( ) {
 
     const refresh = () => {};
 
+    const getUser = () =>{
+        const auth = JSON.parse(localStorage.getItem('auth')); 
+        if(auth){
+            return true;
+        }
+        return null;
+     }
+
     return {
         signin, 
         signup,
         logout,
-        refresh
+        refresh,
+        getUser
     }
 }
 

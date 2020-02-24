@@ -6,12 +6,13 @@ import {Route, Switch} from 'react-router-dom';
 
 import {getTodo, getFilter, getLists} from './actions/index';
 
-import Navbar from './components/navbar';
+import Navbar from './components/header';
 import ErrorBoundary from './components/ErrorBoundary';
 
 import {todosContainer as TodosContainer} from './containers/todosContainer';
 import {listsContainer as ListsContainer} from './containers/listsContainer';
 import {footerContainer as FooterContainer} from './containers/footerContainer';
+import PrivateRoute from './containers/privateRoute';
 import Login from './components/login';
 import Logout from './components/logout';
 
@@ -30,9 +31,9 @@ class App extends React.Component {
         <main className="container mb-5 pb-5"> 
           <ErrorBoundary>
             <Switch>
-              <Route  path ="/lists/:list/todos" component={TodosContainer}  />
-              <Route  path ="/lists" component={ListsContainer} />
-              <Route  path ="/todos" component={TodosContainer} />
+              <PrivateRoute  path ="/lists/:list/todos" component={TodosContainer}  />
+              <PrivateRoute  path ="/lists" component={ListsContainer} />
+              <PrivateRoute  path ="/todos" component={TodosContainer} />
               <Route  path ="/login" component={Login} />
               <Route  path ="/logout" component={Logout} />
             </Switch>
