@@ -13,6 +13,7 @@ import {todosContainer as TodosContainer} from './containers/todosContainer';
 import {listsContainer as ListsContainer} from './containers/listsContainer';
 import {footerContainer as FooterContainer} from './containers/footerContainer';
 import Login from './components/login';
+import Logout from './components/logout';
 
 class App extends React.Component {
   componentDidMount() {
@@ -33,6 +34,7 @@ class App extends React.Component {
               <Route  path ="/lists" component={ListsContainer} />
               <Route  path ="/todos" component={TodosContainer} />
               <Route  path ="/login" component={Login} />
+              <Route  path ="/logout" component={Logout} />
             </Switch>
           </ErrorBoundary>
         </main>

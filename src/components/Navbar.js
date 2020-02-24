@@ -24,6 +24,9 @@ export default function navBar({onClick}) {
           <li className="nav-item">
             <NavLink className="nav-link" activeClassName="active" to="/signup">SIGNUP </NavLink>
           </li>
+          <li className="nav-item">
+            <NavLink className="nav-link" activeClassName="active" to="/logout">LOGOUT </NavLink>
+          </li>
         </ul>
       </div>
     </nav>
