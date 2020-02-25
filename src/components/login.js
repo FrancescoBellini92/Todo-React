@@ -18,7 +18,7 @@ export default function Login(pars) {
             pars.history.push('/lists');
             console.log(payload.access_token);
         })
-        .catch(rejection => alert(rejection.message));
+        .catch(rejection => alert(rejection));
 
     }
 
