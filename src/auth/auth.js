@@ -26,8 +26,7 @@ function auth( ) {
             localStorage.setItem('auth', JSON.stringify(result.data));
             return result.data;
         } catch (e) {
-            console.log(e);
-            return e;
+            Promise.reject('wrong username or password');
         }
     }
 

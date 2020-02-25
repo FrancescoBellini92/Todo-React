@@ -1,9 +1,14 @@
-import React from 'react';
-import {NavLink} from 'react-router-dom';
-import Auth from '../auth/auth';
+/*
+Here we define the header component, that consume UserContext state by using the useContext hook
+*/
 
-export default function navBar() {
-  if (Auth.getUser()) {
+import React, { useContext} from 'react';
+import {UserContext} from '../containers/userContext';
+import {NavLink} from 'react-router-dom';
+
+export default function Header() {
+  const [user] = useContext(UserContext);
+  if (user) {
     return (
       <nav className="navbar navbar-expand-md navbar-dark bg-dark">
         <h1 className="navbar-brand">Todo App</h1>

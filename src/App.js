@@ -13,6 +13,7 @@ import {todosContainer as TodosContainer} from './containers/todosContainer';
 import {listsContainer as ListsContainer} from './containers/listsContainer';
 import {footerContainer as FooterContainer} from './containers/footerContainer';
 import PrivateRoute from './containers/privateRoute';
+import { UserProvider } from './containers/userContext';
 import Login from './components/login';
 import Logout from './components/logout';
 
@@ -24,7 +25,7 @@ class App extends React.Component {
 
   render () {
     return (
-      <React.Fragment>
+      <UserProvider>
         <header>
           <Navbar/>
         </header>
@@ -42,7 +43,7 @@ class App extends React.Component {
         <footer>
           <FooterContainer />
         </footer>
-      </React.Fragment>
+      </UserProvider>
     );
   }
 }
