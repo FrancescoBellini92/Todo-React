@@ -3,7 +3,7 @@ Here we define the logout component, that consume UserContext state by using use
 */
 
 import {useEffect, useContext} from 'react';
-import {UserContext} from '../containers/userContext';
+import {UserContext} from '../containers/UserContext';
 import Auth from '../auth/auth';
 
 export default function Logout (pars) {

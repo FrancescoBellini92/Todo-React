@@ -1,4 +1,4 @@
-import Todos from '../components/todos';
+import TodoPage from '../components/TodoPage';
 import {connect} from 'react-redux';
 import {removeTodo, completeTodo, getTodo} from '../actions/index';
 
@@ -12,4 +12,4 @@ function mapStateToProps({todos, filter, error}) {
     error
 })}
 
-export const todosContainer = connect(mapStateToProps, {removeTodo, completeTodo, getTodo})(Todos);
+export const TodoPageContainer = connect(mapStateToProps, {removeTodo, completeTodo, getTodo})(TodoPage);

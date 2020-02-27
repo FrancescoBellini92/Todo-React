@@ -6,16 +6,15 @@ import {Route, Switch} from 'react-router-dom';
 
 import {getTodo, getFilter, getLists} from './actions/index';
 
-import Navbar from './components/header';
-import ErrorBoundary from './components/ErrorBoundary';
+import Header from './components/Header';
 
-import {todosContainer as TodosContainer} from './containers/todosContainer';
-import {listsContainer as ListsContainer} from './containers/listsContainer';
-import {footerContainer as FooterContainer} from './containers/footerContainer';
-import PrivateRoute from './containers/privateRoute';
-import { UserProvider } from './containers/userContext';
-import Login from './components/login';
-import Logout from './components/logout';
+import {TodoPageContainer} from './containers/TodoPageContainer';
+import {ListPageContainer} from './containers/ListPageContainer';
+import PrivateRoute from './containers/PrivateRoute';
+
+import ErrorBoundary from './components/ErrorBoundary';
+import Login from './components/Login';
+import Logout from './components/Logout';
 
 class App extends React.Component {
   componentDidMount() {
@@ -25,25 +24,16 @@ class App extends React.Component {
 
   render () {
     return (
-      <UserProvider>
-        <header>
-          <Navbar/>
-        </header>
-        <main className="container mb-5 pb-5"> 
-          <ErrorBoundary>
+      <ErrorBoundary>
+          <Header/>
             <Switch>
-              <PrivateRoute  path ="/lists/:list/todos" component={TodosContainer}  />
-              <PrivateRoute  path ="/lists" component={ListsContainer} />
-              <PrivateRoute  path ="/todos" component={TodosContainer} />
+              <PrivateRoute  path ="/lists/:list/todos" component={TodoPageContainer}  />
+              <PrivateRoute  path ="/lists" component={ListPageContainer} />
+              <PrivateRoute  path ="/todos" component={TodoPageContainer} />
               <Route  path ="/login" component={Login} />
               <Route  path ="/logout" component={Logout} />
             </Switch>
-          </ErrorBoundary>
-        </main>
-        <footer>
-          <FooterContainer />
-        </footer>
-      </UserProvider>
+     </ErrorBoundary>
     );
   }
 }

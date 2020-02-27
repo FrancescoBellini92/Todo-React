@@ -4,7 +4,7 @@ being returned or we should redirect to login page
 */
 
 import React, {useContext} from 'react';
-import {UserContext} from './userContext';
+import {UserContext} from './UserContext';
 import {Route, Redirect} from 'react-router-dom';
 
 export default function PrivateRouter(props) {

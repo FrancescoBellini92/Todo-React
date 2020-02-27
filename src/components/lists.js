@@ -1,20 +1,11 @@
 import React from 'react';
-import List from './list';
-import {listAdderContainer as ListAdderContainer} from '../containers/adderContainer';
+import List from './List';
 
-export default function lists ({lists, removeList, error}) {
-    if (error.hasError) {
-        throw new Error(error.errorMessage)
-    }
-
+export default function Lists ({lists, removeList}) {
     return (
-    <div className="container">
-    <ListAdderContainer />
         <ul className="list-group">
-            {lists.map( (item) => <List key={item.id} onRemove={ () => { 
-                removeList(item.id)}} name={item.name} id={item.id}/>
-                )}
+            {lists.map((item) => <List key={item.id} onRemove={ () => { 
+                removeList(item.id)}} name={item.name} id={item.id}/>)}
         </ul>
-    </div>
     );
 }

@@ -10,6 +10,8 @@ import logger from 'redux-logger';
 import promise from 'redux-promise-middleware';
 
 import storeReducer from './reducers/index';
+
+import { UserProvider } from './containers/UserContext';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
@@ -50,9 +52,11 @@ store.subscribe( () => {
 
 ReactDOM.render(
 <Provider store={store}>
-    <BrowserRouter>
-        <App />
-    </BrowserRouter>
+    <UserProvider>
+        <BrowserRouter>
+            <App />
+        </BrowserRouter>
+    </UserProvider>
 </Provider>, 
 document.getElementById('root')
 );

@@ -3,7 +3,7 @@ Here we define the login component, that consume UserContext state by using the 
 */
 
 import React, {useState, useContext} from 'react';
-import {UserContext} from '../containers/userContext';
+import {UserContext} from '../containers/UserContext';
 import Auth from '../auth/auth';
 
 export default function Login(pars) {
@@ -23,20 +23,17 @@ export default function Login(pars) {
     }
 
     return (
-        <form className="form-login mx-auto mt-5">
-            <h1 className="h3 mb-3 font-weight-normal text-center">Please login</h1>
+        <form className="form-login container mx-auto mt-5">
             <label htmlFor="inputEmail" className="sr-only">Email address</label>
             <input type="email" id="inputEmail" className="form-control" placeholder="Email address" 
-            onChange={ e => setEmail(e.target.value)} autoFocus/>
+                onChange={ e => setEmail(e.target.value)} autoFocus/>
             <label htmlFor="inputPassword" className="sr-only">Password</label>
             <input type="password" id="inputPassword" className="form-control mt-1" placeholder="Password" 
-             onChange={ e => setPassword(e.target.value)} required/>
-            <div className="checkbox my-2">
-                <label>
-                <input type="checkbox" value="remember-me"/> Remember me
-                </label>
+            onChange={ e => setPassword(e.target.value)} required/>
+            <div className="row justify-content-center">
+                <button className="btn btn-lg btn-secondary mr-2 mt-2" type="submit" onClick={loginAction}>sign in</button>
+                <button className="btn btn-lg btn-primary mt-2 " type="submit" onClick={loginAction}>log in</button>
             </div>
-            <button className="btn btn-lg btn-secondary btn-block" type="submit" onClick={loginAction}>Log in</button>
-        </form>
+    </form>
     );
 }
