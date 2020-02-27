@@ -3,8 +3,8 @@ import {Link} from 'react-router-dom';
 
 export default function List ({name, id, onRemove}) {
   return (
-    <li className="list-group-item ">
-      <div className="input-group mb-3">
+    <li className="list-group-item bg-light">
+      <div className="input-group">
         <Link className="form-control" to={{
           pathname: `lists/${id}/todos`,
           state: {

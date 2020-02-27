@@ -25,9 +25,18 @@ export default class TodoPage extends React.Component {
   render () {
     const listId = this.props.match.params.list || 0;
     const listName = this.props.location.state ? this.props.location.state.name : null;
+    let ListAlert;
+    if (listName) {
+      ListAlert = () => 
+        <div className="alert alert-primary text-center my-3">
+          <strong>{listName}</strong>
+        </div>
+    } else {
+      ListAlert = () => null;
+    }
     return (
       <div className="container">
-        <h3 className="text-center"> {listName}</h3>
+        <ListAlert />
         <TodoAdderContainer list={listId} />
         <Todos todos={this.props.todos} completeTodo={this.props.completeTodo} removeTodo={this.props.removeTodo} />
         <FooterContainer />

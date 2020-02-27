@@ -5,8 +5,8 @@ export default function todo({onRemove, onComplete, todo}) {
     let returnedClassCheck ;
     todo.completed ? returnedClassCheck = "btn btn-success" : returnedClassCheck = "btn btn-outline-success";
     return (
-      <li className="list-group">
-        <div className="input-group mb-3">
+      <li className="list-group-item bg-light">
+        <div className="input-group todos mb-3">
           <input className="form-control" type="text" defaultValue={todo.todo} />
           <div className="input-group-append">
             <button className={returnedClassCheck} onClick={onComplete}>
