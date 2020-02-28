@@ -19,3 +19,20 @@ code {
   max-width: 600px;
   margin: 0 auto;
 }
+
+.sm-header, .sm-btn {
+  display: none;
+}
+@media only screen and (max-width:375px) {
+  .lg-header, .lg-btn {
+    display: none;
+  }
+  .sm-header {
+    display: flex;
+  }
+  .sm-btn {
+    display: block;
+  }
+
+
+}

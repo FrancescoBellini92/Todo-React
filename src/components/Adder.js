@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FaPlus } from './Icons'
 
 export default function adder({addFunc, list}) {
   let input;
@@ -8,12 +9,12 @@ export default function adder({addFunc, list}) {
       <input className="form-control" ref={ node => {input = node}}
       onKeyUp={e => { if(e.keyCode === 13) {addFunc(input.value)}}} />
       <div className="input-group-append">
-        <button className="btn btn-outline-primary" type="button" onClick={
+        <button className="btn btn-primary" type="button" onClick={
           () => {
             addFunc(input.value, list)
             input.value = '';
           }}>
-            Add
+            <FaPlus />
           </button>
       </div>
   </div>

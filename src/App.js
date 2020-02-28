@@ -9,7 +9,7 @@ import {getTodo, getFilter, getLists} from './actions/index';
 import Header from './components/Header';
 
 import {TodoPageContainer} from './containers/TodoPageContainer';
-import {ListPageContainer} from './containers/ListPageContainer';
+import {ListPageContainer, SpecificListPageContainer} from './containers/ListPageContainer';
 import PrivateRoute from './containers/PrivateRoute';
 
 import ErrorBoundary from './components/ErrorBoundary';
@@ -17,10 +17,7 @@ import Login from './components/Login';
 import Logout from './components/Logout';
 
 class App extends React.Component {
-  componentDidMount() {
-    this.props.getTodo();
-    this.props.getLists();
-  }
+
 
   render () {
     return (
@@ -28,6 +25,7 @@ class App extends React.Component {
           <Header/>
             <Switch>
               <PrivateRoute  path ="/lists/:list/todos" component={TodoPageContainer}  />
+              <PrivateRoute  path ="/lists/search/:name" component={ListPageContainer} />
               <PrivateRoute  path ="/lists" component={ListPageContainer} />
               <PrivateRoute  path ="/todos" component={TodoPageContainer} />
               <Route  path ="/login" component={Login} />

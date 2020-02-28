@@ -37,18 +37,33 @@ export const filterTodo = (filter = 'null') => {
 
 
 
-export const getLists = () => {
+export const getLists = (name = null) => {
+  let url = name ? APILISTSURL + `?name=${name}` : APILISTSURL
   return ({
     type:'GET_LISTS',
-    payload: Axios.get(APILISTSURL)
+    payload: Axios.get(url)
   })
 }
-
 export const addList = (list) => {
   return ({
     type: 'ADD_LIST',
     payload: Axios.post(APILISTSURL,{
       name: list
+    })
+  })
+}
+export const updateList = (id, name) => {
+  return ({
+    type: 'UPDATE_LIST',
+    payload: { id, name}
+  });
+}
+export const updateListOnBackend = (list, name) => {
+  return ({
+    type: 'UPDATE_LIST_ON_BACKEND',
+    payload: Axios.post(APILISTSURL + `/${list}`,{
+      name,
+      _method: 'PUT'
     })
   })
 }

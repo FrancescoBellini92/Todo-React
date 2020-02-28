@@ -9,4 +9,5 @@ function mapStateToProps ({filter}) {
     })
 }
 
-export const FooterContainer = withRouter(connect(mapStateToProps, {filterTodo})(Footer));
+export const TodoFooterContainer = withRouter(connect(mapStateToProps, {filterTodo})(Footer));
+export const FooterContainer = withRouter(connect(mapStateToProps, )(Footer));
