@@ -22,5 +22,6 @@ export default function adder({addFunc, list}) {
 }
 
 adder.propTypes = {
-  addTodo: PropTypes.func
+  addFunc: PropTypes.func,
+  list: PropTypes.string
 }

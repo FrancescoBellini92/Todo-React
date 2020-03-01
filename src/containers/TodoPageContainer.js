@@ -1,15 +1,9 @@
 import TodoPage from '../components/TodoPage';
 import {connect} from 'react-redux';
-import {removeTodo, completeTodo, getTodo} from '../actions/index';
+import { removeTodo, updateTodoInBackend, updateTodo, getTodo } from '../actions/index';
 
-function mapStateToProps({todos, filter, error}) {
-    return ({ todos: [...todos.filter( (todo) => {
-        if (filter.activeFilter) {
-            return todo.state === filter.activeFilter
-        }
-        return true;
-    })],
-    error
-})}
+function mapStateToProps({todos, error}) {
+    return ({ todos,  error})}
 
-export const TodoPageContainer = connect(mapStateToProps, {removeTodo, completeTodo, getTodo})(TodoPage);
+export const TodoPageContainer = connect(mapStateToProps, 
+    { removeTodo, updateTodoInBackend, updateTodo, getTodo })(TodoPage);

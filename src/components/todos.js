@@ -2,11 +2,14 @@ import React from 'react';
 import Todo from './Todo';
 import PropTypes from 'prop-types';
 
-export default function Todos ({todos, completeTodo, removeTodo}) {
+export default function Todos ({todos, updateTodoInBackend, updateTodo, removeTodo}) {
   return (
     <ul className="list-group mb-5 pb-5">
-          {todos.map( (todo) => <Todo onComplete={() => {completeTodo(todo)}} 
-        onRemove={ () => {removeTodo(todo.id)}} key={todo.id} todo={todo}/>)}
+          {todos.map( (todo) => <Todo onComplete={() => updateTodoInBackend(todo,'1')} 
+            onUncompleteTodo={() => updateTodoInBackend(todo,'0')}
+            onUpdate={updateTodo} 
+            onSave={() => updateTodoInBackend(todo) } 
+            onRemove={ () => {removeTodo(todo.id)}} key={todo.id} todo={todo}/>)}
     </ul>
   );
 }

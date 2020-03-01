@@ -1,6 +1,7 @@
 import ListPage from '../components/ListPage';
-import {connect} from 'react-redux';
-import {getLists, updateList, removeList} from '../actions/index';
+import { connect } from 'react-redux';
+import { getLists, updateList, updateListOnBackend, removeList } from '../actions/index';
+
 function mapStateToProps({lists, error}) {
     return ({
         lists,
@@ -8,4 +9,4 @@ function mapStateToProps({lists, error}) {
     });
 }
 
-export const ListPageContainer = connect(mapStateToProps,{getLists, updateList, removeList})(ListPage);
+export const ListPageContainer = connect(mapStateToProps,{ getLists, updateList, updateListOnBackend, removeList })(ListPage);

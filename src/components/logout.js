@@ -12,7 +12,6 @@ export default function Logout (pars) {
         Auth.logout();
         setUser(null);
         pars.history.push('/login');
-
     },);
     return null;
 }

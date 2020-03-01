@@ -2,9 +2,9 @@
 Here we define the header component, that consume UserContext state by using the useContext hook
 */
 
-import React, { useContext} from 'react';
-import {UserContext} from '../containers/UserContext';
-import {NavLink} from 'react-router-dom';
+import React, { useContext } from 'react';
+import { UserContext } from '../containers/UserContext';
+import { NavLink}  from 'react-router-dom';
 import { FaList, FaTasks, FaLogout } from './Icons';
 
 export default function Header() {

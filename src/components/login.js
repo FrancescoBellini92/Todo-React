@@ -3,7 +3,8 @@ Here we define the login component, that consume UserContext state by using the 
 */
 
 import React, {useState, useContext} from 'react';
-import {UserContext} from '../containers/UserContext';
+import { UserContext } from '../containers/UserContext';
+import  {FaLogin } from './Icons';
 import Auth from '../auth/auth';
 
 export default function Login(pars) {
@@ -19,7 +20,6 @@ export default function Login(pars) {
             console.log(payload.access_token);
         })
         .catch(rejection => alert(rejection));
-
     }
 
     return (
@@ -29,10 +29,14 @@ export default function Login(pars) {
                 onChange={ e => setEmail(e.target.value)} autoFocus/>
             <label htmlFor="inputPassword" className="sr-only">Password</label>
             <input type="password" id="inputPassword" className="form-control mt-1" placeholder="Password" 
-            onChange={ e => setPassword(e.target.value)} required/>
+                onChange={ e => setPassword(e.target.value)} required/>
             <div className="row justify-content-center">
-                <button className="btn btn-lg btn-secondary mr-2 mt-2" type="submit" onClick={loginAction}>sign in</button>
-                <button className="btn btn-lg btn-primary mt-2 " type="submit" onClick={loginAction}>log in</button>
+                <button className="btn btn-lg btn-secondary mr-2 mt-2" type="submit" onClick={loginAction}>
+                    <FaLogin /> sign in
+                </button>
+                <button className="btn btn-lg btn-primary mt-2 " type="submit" onClick={loginAction}>
+                    <FaLogin /> log in
+                </button>
             </div>
     </form>
     );

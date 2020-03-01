@@ -1,5 +1,4 @@
-import {ADD_TODO, GET_TODO, REMOVE_TODO, COMPLETE_TODO} from '../actions/actionTypes';
-
+import { ADD_TODO, GET_TODO, REMOVE_TODO, COMPLETE_TODO, UPDATE_TODO } from '../actions/actionTypes';
 
 export default function todoReducer (state = [], action) {
     switch (action.type) {
@@ -12,6 +11,12 @@ export default function todoReducer (state = [], action) {
           ...state
         ];
         return state;
+      case `${UPDATE_TODO}`:
+          return state.map(todo => {
+            let returnedValue = todo;
+            todo.id === action.payload.id ? returnedValue.todo = action.payload.todo : (()=>{})();
+            return returnedValue;
+          })
       case `${COMPLETE_TODO}_FULFILLED`:
         const result = action.payload.data.result;
         return state.map(todo => {

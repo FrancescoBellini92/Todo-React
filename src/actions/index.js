@@ -1,10 +1,10 @@
 import Axios from "axios";
-import {APIURL, APIFILTERURL, APILISTSURL} from '../config/config';
+import {APIURL, APILISTSURL} from '../config/config';
 
-export const getTodo = (list = 1) => {
+export const getTodo = (list = 1, filter = null) => {
   return ({
     type:'GET_TODO',
-    payload: Axios.get(APIURL + `?list_id=${list}`)
+    payload: Axios.get(APIURL + `?list_id=${list}${filter ? '&filter=' + filter : ''}`)
   });
 }
 export const addTodo = (todo, list_id = 1) => {
@@ -19,24 +19,29 @@ export const addTodo = (todo, list_id = 1) => {
  export const removeTodo = (id) => {
   return({
       type: 'REMOVE_TODO',
-      payload: Axios.delete(APIURL+'/'+id, {id})
+      payload: Axios.delete(APIURL+`/${id}`, {id})
     });
   }
-export const completeTodo = (todo) => {
+export const updateTodo = (id, todo) => {
+  return ({
+    type: 'UPDATE_TODO',
+    payload: {id, todo}
+  });
+}
+export const updateTodoInBackend = (todo, completed = null) => {
+  let requestBody = {...todo};
+
+  if (completed === '0') {
+    requestBody.completed = 0;
+  } else if (completed === '1') {
+    requestBody.completed = 1;
+  }
+
   return ({
     type: 'COMPLETE_TODO',
-    payload: Axios.patch(APIURL+'/'+ todo.id, {...todo, completed: 1})
+    payload: Axios.patch(APIURL+'/'+ todo.id, requestBody)
   });
 }
-export const filterTodo = (filter = 'null') => {
-  return ({
-    type: 'SET_FILTER',
-    payload: Axios.patch(APIFILTERURL, {activeFilter: filter})
-  });
-}
-
-
-
 export const getLists = (name = null) => {
   let url = name ? APILISTSURL + `?name=${name}` : APILISTSURL
   return ({
@@ -58,13 +63,10 @@ export const updateList = (id, name) => {
     payload: { id, name}
   });
 }
-export const updateListOnBackend = (list, name) => {
+export const updateListOnBackend = (id, name) => {
   return ({
     type: 'UPDATE_LIST_ON_BACKEND',
-    payload: Axios.post(APILISTSURL + `/${list}`,{
-      name,
-      _method: 'PUT'
-    })
+    payload: Axios.patch(APILISTSURL + `/${id}`,{name})
   })
 }
 export const removeList= (id) => {
@@ -73,9 +75,3 @@ export const removeList= (id) => {
       payload: Axios.delete(APILISTSURL + '/' + id, {id})
     });
   }
-export const getFilter= () => {
-  return ({
-    type:'GET_FILTER',
-    payload: Axios.get(APIFILTERURL)
-  });
-}

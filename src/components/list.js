@@ -1,48 +1,41 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Link} from 'react-router-dom';
 import { FaRemove, FaSave, FaTasks } from './Icons';
 
 
-export default function List ({name, id, onUpdate, onRemove}) {
-  const input = React.createRef();
-  const val = name;
+export default function List ({name, id, updateList, updateListOnBackend, removeList}) {
   return (
     <li className="list-group-item bg-light">
       <div className="input-group">
-        <input ref={input} value={val} type="text" onChange={e => onUpdate(id, e.target.value)} className="form-control list-item" to={{
-          pathname: `lists/${id}/todos`,
-          state: {
-            name
-          }}}/>
-     
+        <input value={name} type="text" onChange={e => updateList(id, e.target.value)} className="form-control list-item"/>
           <div className="input-group-append lg-btn">
-          <Link className="btn btn-primary" to={{
-          pathname: `lists/${id}/todos`,
-          state: {
-            name
-          }}}>
+            <Link className="btn btn-secondary" to={{
+            pathname: `todos/list/${id}`,
+            state: {
+              name
+            }}}>
                 <FaTasks />
             </Link>
-            <button onClick={onRemove} className="btn btn-success">
+            <button onClick={() => updateListOnBackend(id, name)} className="btn btn-primary">
                 <FaSave />
             </button>
-            <button onClick={onRemove} className="btn btn-danger">
+            <button onClick={removeList} className="btn btn-danger">
               <FaRemove />
             </button>
           </div>
       </div>
       <div className="btn-group mt-1 float-right sm-btn">
-      <Link className="btn btn-primary" to={{
-          pathname: `lists/${id}/todos`,
-          state: {
-            name
-          }}}>
+        <Link className="btn btn-secondary" to={{
+            pathname: `todos/list/${id}`,
+            state: {
+              name
+            }}}>
                 <FaTasks />
             </Link>
-            <button onClick={onRemove} className="btn btn-success">
+            <button onClick={removeList} className="btn btn-primary">
                 <FaSave />
             </button>
-            <button onClick={onRemove} className="btn btn-danger">
+            <button onClick={removeList} className="btn btn-danger">
               <FaRemove />
             </button>
           </div>

@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import {createStore, applyMiddleware, compose} from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import {Provider} from 'react-redux';
 
-import {BrowserRouter} from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 
 import logger from 'redux-logger';
 import promise from 'redux-promise-middleware';
@@ -17,9 +17,7 @@ import * as serviceWorker from './serviceWorker';
 
 import './index.css';
 
-
 function loadToDoList() {
-    
     if (localStorage.getItem('todoList')) {
         const currentState = JSON.parse(localStorage.getItem('todoList'));
         if (currentState.error.hasError) {
@@ -28,9 +26,6 @@ function loadToDoList() {
         return({...currentState});
     }
     return {
-        filter: {
-            activeFilter: null
-        }, 
         error: {
             hasError: false, 
             errorMessage: ''
@@ -39,6 +34,7 @@ function loadToDoList() {
         lists:[]
     };
 }
+
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(storeReducer, loadToDoList(), 
     composeEnhancers(applyMiddleware(logger, promise)));
@@ -48,7 +44,6 @@ store.subscribe( () => {
         localStorage.setItem('todoList', JSON.stringify(store.getState()));
     }
 })
-
 
 ReactDOM.render(
 <Provider store={store}>

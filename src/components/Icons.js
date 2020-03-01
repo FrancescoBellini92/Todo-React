@@ -9,15 +9,22 @@ import {
     faTrash, 
     faCheck, 
     faFilter,
-    faSave
+    faSave,
+    faSignInAlt
 } from '@fortawesome/free-solid-svg-icons';
- 
-export const FaList = () => <FontAwesomeIcon icon={faList} />;
-export const FaTasks = () => <FontAwesomeIcon icon={faTasks} />;
-export const FaLogout = () => <FontAwesomeIcon icon={faSignOutAlt} />;
+
 export const FaPlus = () => <FontAwesomeIcon icon={faPlusCircle} />;
 export const FaSearch = () => <FontAwesomeIcon icon={faSearch} />;
+export const FaFilter = () => <FontAwesomeIcon icon={faFilter} />; 
+
+
+export const FaSave = () => <FontAwesomeIcon icon={faSave} />; 
+
+export const FaList = () => <FontAwesomeIcon icon={faList} />;
+export const FaTasks = () => <FontAwesomeIcon icon={faTasks} />;
+
 export const FaRemove = () => <FontAwesomeIcon icon={faTrash} />; 
 export const FaCheck = () => <FontAwesomeIcon icon={faCheck} />; 
-export const FaFilter = () => <FontAwesomeIcon icon={faFilter} />; 
-export const FaSave = () => <FontAwesomeIcon icon={faSave} />; 
+
+export const FaLogout = () => <FontAwesomeIcon icon={faSignOutAlt} />;
+export const FaLogin = () => <FontAwesomeIcon icon={faSignInAlt} />;

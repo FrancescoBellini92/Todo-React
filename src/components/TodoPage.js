@@ -1,15 +1,23 @@
 import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import Todos from './Todos';
-import {TodoAdderContainer} from  '../containers/AdderContainer';
-import {FooterContainer} from '../containers/FooterContainer';
+import { TodoAdderContainer } from  '../containers/AdderContainer';
+import { TodoFooter } from '../components/Footer';
 
 export default function TodoPage (props) {
-    if (props.hasError) {
+    if (props.error.hasError) {
       throw new Error(props.error.errorMessage)
     }
 
-    useEffect(() => {props.getTodo(props.match.params.list)}, []);
+    const getFilterFromQueryString = (search) => {
+      if (search.indexOf('filter') === -1) {
+        return false;
+      }
+      return (search.split('=')[1]); 
+    }
+
+    const filter=getFilterFromQueryString(props.location.search);
+    useEffect(() => {props.getTodo(props.match.params.list, filter)}, [filter]);
 
     const listId = props.match.params.list || 0;
     const listName = props.location.state ? props.location.state.name : null;
@@ -26,8 +34,8 @@ export default function TodoPage (props) {
       <div className="container">
         <ListAlert />
         <TodoAdderContainer list={listId} />
-        <Todos todos={props.todos} completeTodo={props.completeTodo} removeTodo={props.removeTodo} />
-        <FooterContainer />
+        <Todos {...props} />
+        <TodoFooter match={props.match} filter={filter}/>
     </div>
     );
 }
