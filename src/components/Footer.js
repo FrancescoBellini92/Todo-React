@@ -16,7 +16,7 @@ export function ListFooter () {
           <div className="input-group">
             <input type="search" className="form-control" value={searchValue} onChange={e => setSearchValue(e.target.value)} placeholder="Search..." />
             <div className="input-group-append">
-              <NavLink  className="btn btn-primary" to={`/lists/search/${searchValue}`} title="Search" aria-label="Search">
+              <NavLink  className="btn btn-primary" to={`/search/${searchValue}`} title="Search" aria-label="Search">
                 <FaSearch />
               </NavLink>
               </div>
@@ -26,7 +26,7 @@ export function ListFooter () {
   )
 };
 
-export function TodoFooter ({ match, filter}) {
+export function TodoFooter ({ match, filter, listName}) {
   let completedBtnClass;
   let pendingBtnClass;
   let allBtnClass;
@@ -42,25 +42,38 @@ export function TodoFooter ({ match, filter}) {
       break;
     default:
       allBtnClass = 'btn-primary';
-
   }
+
+  let locationState = {name:listName};
 
   return (
     <div className="footer container-fluid fixed-bottom bg-light pt-2">
       <form className="form-inline my-2 justify-content-center mx-auto">
-        <div class="conainer lg-btn">
-          <NavLink exact className={`btn btn-sm ${completedBtnClass} mx-2`} to={`${match.url}?filter=completed`}>
+        <div className="conainer lg-btn">
+          <NavLink exact className={`btn btn-sm ${completedBtnClass} mx-2`}  to={{
+            pathname: `${match.url}?filter=completed`,
+            state:locationState
+          }}>
             <FaFilter /> show completed
           </NavLink>
-          <NavLink exact className={`btn btn-sm ${pendingBtnClass} mx-2`} to={`${match.url}?filter=pending`}>
+          <NavLink exact className={`btn btn-sm ${pendingBtnClass} mx-2`} to={{
+            pathname: `${match.url}?filter=pending`,
+            state: locationState
+            }}>
             <FaFilter /> show pending
           </NavLink>
-          <NavLink exact className={`btn btn-sm ${allBtnClass} mx-2`}   to={match.url}>
+          <NavLink exact className={`btn btn-sm ${allBtnClass} mx-2`}  to={{
+            pathname: `${match.url}?filter=all`,
+            state: locationState
+            }}>
             <FaFilter /> show all
           </NavLink>
         </div>
         <div class="conainer sm-btn">
-          <NavLink exact className={`btn btn-sm ${completedBtnClass} mx-2`} to={`${match.url}?filter=completed`}>
+          <NavLink exact className={`btn btn-sm ${completedBtnClass} mx-2`}to={{
+            pathname: `${match.url}?filter=pending`,
+            state: locationState
+            }}>
             <FaFilter /> completed
           </NavLink>
           <NavLink exact className={`btn btn-sm ${pendingBtnClass} mx-2`} to={`${match.url}?filter=pending`}>

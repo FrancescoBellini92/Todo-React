@@ -10,7 +10,8 @@ import {
     faCheck, 
     faFilter,
     faSave,
-    faSignInAlt
+    faSignInAlt,
+    faArrowLeft
 } from '@fortawesome/free-solid-svg-icons';
 
 export const FaPlus = () => <FontAwesomeIcon icon={faPlusCircle} />;
@@ -28,3 +29,5 @@ export const FaCheck = () => <FontAwesomeIcon icon={faCheck} />;
 
 export const FaLogout = () => <FontAwesomeIcon icon={faSignOutAlt} />;
 export const FaLogin = () => <FontAwesomeIcon icon={faSignInAlt} />;
+
+export const FaBack = () => <FontAwesomeIcon icon={faArrowLeft} />;

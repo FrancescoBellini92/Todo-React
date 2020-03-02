@@ -3,6 +3,7 @@ Here we define the login component, that consume UserContext state by using the 
 */
 
 import React, {useState, useContext} from 'react';
+import { NavLink } from 'react-router-dom';
 import { UserContext } from '../containers/UserContext';
 import  {FaLogin } from './Icons';
 import Auth from '../auth/auth';
@@ -17,27 +18,32 @@ export default function Login(pars) {
         .then(payload => {
             setUser(true);
             pars.history.push('/lists');
-            console.log(payload.access_token);
         })
         .catch(rejection => alert(rejection));
     }
 
     return (
-        <form className="form-login container mx-auto mt-5">
-            <label htmlFor="inputEmail" className="sr-only">Email address</label>
-            <input type="email" id="inputEmail" className="form-control" placeholder="Email address" 
-                onChange={ e => setEmail(e.target.value)} autoFocus/>
-            <label htmlFor="inputPassword" className="sr-only">Password</label>
-            <input type="password" id="inputPassword" className="form-control mt-1" placeholder="Password" 
-                onChange={ e => setPassword(e.target.value)} required/>
-            <div className="row justify-content-center">
-                <button className="btn btn-lg btn-secondary mr-2 mt-2" type="submit" onClick={loginAction}>
-                    <FaLogin /> sign in
-                </button>
-                <button className="btn btn-lg btn-primary mt-2 " type="submit" onClick={loginAction}>
-                    <FaLogin /> log in
-                </button>
-            </div>
-    </form>
+        <>
+            <nav className="navbar navbar-light bg-light">
+                <ul className="nav nav-tabs mx-auto">
+                    <li className="nav-item px-2">
+                        <NavLink className="nav-link" activeClassName="active" to="/login">LOGIN</NavLink>
+                    </li>
+                </ul>
+            </nav>
+            <form className="form-login container mt-5 mx-auto">
+                <label htmlFor="inputEmail" className="sr-only">Email address</label>
+                <input type="email" id="inputEmail" className="form-control" placeholder="Email address" 
+                    onChange={ e => setEmail(e.target.value)} autoFocus/>
+                <label htmlFor="inputPassword" className="sr-only">Password</label>
+                <input type="password" id="inputPassword" className="form-control mt-1" placeholder="Password" 
+                    onChange={ e => setPassword(e.target.value)} required/>
+                <div className="container  justify-content-center">
+                    <button className="btn btn-lg btn-block btn-primary mt-2 " type="submit" onClick={loginAction}>
+                        <FaLogin /> log in
+                    </button>
+                </div>
+            </form>
+        </>
     );
 }

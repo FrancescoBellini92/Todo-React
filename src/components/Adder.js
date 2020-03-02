@@ -6,7 +6,7 @@ export default function adder({addFunc, list}) {
   let input;
   return (
     <div className="input-group my-2 adder-container">
-      <input className="form-control" ref={ node => {input = node}}
+      <input className="form-control" placeholder="Add..." ref={ node => {input = node}}
       onKeyUp={e => { if(e.keyCode === 13) {addFunc(input.value)}}} />
       <div className="input-group-append">
         <button className="btn btn-primary" type="button" onClick={

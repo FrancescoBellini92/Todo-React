@@ -1,7 +1,6 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {Route, Switch} from 'react-router-dom';
-import Header from './components/Header';
+import { Route, Switch } from 'react-router-dom';
+
 
 import {TodoPageContainer} from './containers/TodoPageContainer';
 import {ListPageContainer} from './containers/ListPageContainer';
@@ -14,14 +13,13 @@ import Logout from './components/Logout';
 export default function App () {
   return (
     <ErrorBoundary>
-        <Header/>
           <Switch>
+            <PrivateRoute  path ="/search/todos/list/:list" component={TodoPageContainer}  />
             <PrivateRoute  path ="/todos/list/:list" component={TodoPageContainer}  />
-            <PrivateRoute  path ="/lists/search/:name" component={ListPageContainer} />
-            <PrivateRoute  path ="/lists" component={ListPageContainer} />
-            <PrivateRoute  path ="/todos" component={TodoPageContainer} />
+            <PrivateRoute  path ="/search/:name" component={ListPageContainer} />
             <Route  path ="/login" component={Login} />
             <Route  path ="/logout" component={Logout} />
+            <PrivateRoute  path ="/" component={ListPageContainer} />
           </Switch>
     </ErrorBoundary>
   );

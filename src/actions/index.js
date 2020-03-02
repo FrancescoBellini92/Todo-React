@@ -1,5 +1,6 @@
 import Axios from "axios";
 import {APIURL, APILISTSURL} from '../config/config';
+import Auth from '../auth/auth';
 
 export const getTodo = (list = 1, filter = null) => {
   return ({
@@ -43,7 +44,8 @@ export const updateTodoInBackend = (todo, completed = null) => {
   });
 }
 export const getLists = (name = null) => {
-  let url = name ? APILISTSURL + `?name=${name}` : APILISTSURL
+  let url = APILISTSURL + `?user_id=${Auth.getUser()}`;
+  url = name ? url + `&name=${name}` : url;
   return ({
     type:'GET_LISTS',
     payload: Axios.get(url)
@@ -53,7 +55,8 @@ export const addList = (list) => {
   return ({
     type: 'ADD_LIST',
     payload: Axios.post(APILISTSURL,{
-      name: list
+      name: list,
+      user_id : Auth.getUser()
     })
   })
 }

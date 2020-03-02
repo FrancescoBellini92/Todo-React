@@ -4,13 +4,13 @@ import { FaCheck, FaSave, FaRemove } from './Icons';
 
 export default function Todo({onRemove, onUpdate, onSave, onComplete, onUncompleteTodo, todo}) {
     let returnedClassCheck ;
-    todo.completed ? returnedClassCheck = "btn btn-success" : returnedClassCheck = "btn btn-secondary";
+    todo.completed ? returnedClassCheck = "btn-success" : returnedClassCheck = "btn-secondary";
     return (
       <li className="list-group-item bg-light">
-        <div className="input-group todos mb-3">
+        <div className="input-group todos mb-1">
           <input className="form-control" type="text" value={todo.todo} onChange={e => onUpdate(todo.id, e.target.value)} />
           <div className="input-group-append lg-btn">
-            <button className={returnedClassCheck} onClick={todo.completed ? onUncompleteTodo : onComplete}>
+            <button className={`btn ${returnedClassCheck}`} onClick={todo.completed ? onUncompleteTodo : onComplete}>
               <FaCheck />
               </button>
             <button className="btn btn-primary" onClick={onSave}>
@@ -21,14 +21,14 @@ export default function Todo({onRemove, onUpdate, onSave, onComplete, onUncomple
             </button> 
           </div>
         </div>
-        <div className="btn-group mt-1 float-right sm-btn">
-          <button className={returnedClassCheck} onClick={todo.completed ? onUncompleteTodo : onComplete}>
+        <div className="btn-group float-right sm-btn">
+          <button className={`btn btn-sm ${returnedClassCheck}`} onClick={todo.completed ? onUncompleteTodo : onComplete}>
               <FaCheck />
             </button>
-            <button className="btn btn-primary" onClick={onSave}>
+            <button className="btn btn-sm btn-primary" onClick={onSave}>
                 <FaSave />
             </button>
-            <button className="btn btn-danger" onClick={onRemove}>
+            <button className="btn btn-sm btn-danger" onClick={onRemove}>
               <FaRemove />
             </button> 
           </div>

@@ -24,6 +24,9 @@ function auth( ) {
                 password
             });
             localStorage.setItem('auth', JSON.stringify(result.data));
+            addAxiosToken();
+            const user = await axios.post(`${APIAUTHURL}me`);
+            localStorage.setItem('user', JSON.stringify(user.data.id));
             return result.data;
         } catch (e) {
            return Promise.reject('wrong username or password');
@@ -37,6 +40,7 @@ function auth( ) {
         try {
             const result =  await axios.post(`${APIAUTHURL}logout`);
             localStorage.removeItem('auth');
+            localStorage.removeItem('user');
             return result;
         } catch (e) {
             console.log(e);
@@ -44,12 +48,10 @@ function auth( ) {
         }
     }
 
-    const refresh = () => {};
-
     const getUser = () =>{
-        const auth = JSON.parse(localStorage.getItem('auth')); 
-        if(auth){
-            return true;
+        const user = JSON.parse(localStorage.getItem('user')); 
+        if(user){
+            return user;
         }
         return null;
      }
@@ -58,7 +60,6 @@ function auth( ) {
         signin, 
         signup,
         logout,
-        refresh,
         getUser
     }
 }

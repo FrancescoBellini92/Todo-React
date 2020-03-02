@@ -25,20 +25,20 @@ export default function List ({name, id, updateList, updateListOnBackend, remove
           </div>
       </div>
       <div className="btn-group mt-1 float-right sm-btn">
-        <Link className="btn btn-secondary" to={{
+        <Link className="btn btn-sm btn-secondary" to={{
             pathname: `todos/list/${id}`,
             state: {
               name
             }}}>
-                <FaTasks />
-            </Link>
-            <button onClick={removeList} className="btn btn-primary">
-                <FaSave />
-            </button>
-            <button onClick={removeList} className="btn btn-danger">
-              <FaRemove />
-            </button>
-          </div>
+            <FaTasks />
+        </Link>
+        <button onClick={removeList} className="btn btn-sm btn-primary">
+            <FaSave />
+        </button>
+        <button onClick={removeList} className="btn btn-sm btn-danger">
+          <FaRemove />
+        </button>
+      </div>
     </li>
   );
 }
