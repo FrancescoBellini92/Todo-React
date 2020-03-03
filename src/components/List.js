@@ -32,7 +32,7 @@ export default function List ({name, id, updateList, updateListOnBackend, remove
             }}}>
             <FaTasks />
         </Link>
-        <button onClick={removeList} className="btn btn-sm btn-primary">
+        <button onClick={() => updateListOnBackend(id, name)}  className="btn btn-sm btn-primary">
             <FaSave />
         </button>
         <button onClick={removeList} className="btn btn-sm btn-danger">

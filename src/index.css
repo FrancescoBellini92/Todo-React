@@ -4,6 +4,9 @@ body {
   font-family:  "Helvetica Neue", sans-serif;
 }
 
+.navbar, .footer {
+  background-color: #CCE5FF
+}
 .form-login {
   max-width: 400px;
 }
