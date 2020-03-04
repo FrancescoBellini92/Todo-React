@@ -39,7 +39,7 @@ export const updateTodoInBackend = (todo, completed = null) => {
   }
 
   return ({
-    type: 'COMPLETE_TODO',
+    type: 'UPDATE_TODO_BACKEND',
     payload: Axios.patch(APIURL+'/'+ todo.id, requestBody)
   });
 }

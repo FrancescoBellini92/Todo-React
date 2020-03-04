@@ -1,59 +1,58 @@
-/*
-Here we define the header component, that consume UserContext state by using the useContext hook
-*/
-
 import React from 'react';
 import { NavLink}  from 'react-router-dom';
 import { FaList, FaTasks, FaLogout, FaBack } from './Icons';
 
+function Nav ({activeClass, to, Icon, text}) {
+  return (
+    <li className="nav-item px-2">
+        <NavLink className="nav-link" activeClassName={activeClass} to={to}> <Icon /> {text} </NavLink>
+    </li>
+  );
+}
+
+function List ({mediaQueryClass, children}) {
+  return (
+    <ul className={`nav nav-tabs mx-auto ${mediaQueryClass}`}>
+      {children}
+    </ul>
+  );
+}
+
 export function ListHeader() {
+
+  function ListNav ({mediaQueryClass}) {
+    return (
+      <List mediaQueryClass={mediaQueryClass}>
+        <Nav activeClass="active" to="/" Icon={FaList} text="Lists" />
+        <Nav activeClass="active" to="/logout" Icon={FaLogout} text="Logout" />
+      </List>
+    );
+  }
+
   return (
     <nav className="navbar navbar-light bg-light">
-      <ul className="nav nav-tabs mx-auto sm-header">
-        <li className="nav-item px-2">
-          <NavLink className="nav-link" activeClassName="active" to="/"><FaList /> </NavLink>
-        </li>
-        <li className="nav-item px-2">
-          <NavLink className="nav-link" activeClassName="active" to="/logout"><FaLogout /> </NavLink>
-        </li>
-      </ul>
-      <ul className="nav nav-tabs mx-auto lg-header">
-        <li className="nav-item px-2">
-          <NavLink className="nav-link" activeClassName="active" to="/"><FaList /> Lists </NavLink>
-        </li>
-        <li className="nav-item px-2">
-          <NavLink className="nav-link" activeClassName="active" to="/logout"><FaLogout /> Logout </NavLink>
-        </li>
-      </ul>
-  </nav>
-  )
+      <ListNav mediaQueryClass="lg-header" />
+      <ListNav mediaQueryClass="sm-header" />
+    </nav>
+  );
 }
 
 export function TodosHeader() {
+
+  function TodoNav({mediaQueryClass}) {
+    return (    
+      <List mediaQueryClass={mediaQueryClass}>
+        <Nav activeClass="no" to="/" Icon={FaBack} text="" />
+        <Nav activeClass="active" to="/todos" Icon={FaTasks} text="Tasks" />
+        <Nav activeClass="active" to="/logout" Icon={FaLogout} text="Logout" />
+      </List>
+      );
+  }
+
   return (
     <nav className="navbar navbar-light bg-light">
-      <ul className="nav nav-tabs mx-auto sm-header">
-        <li className="nav-item px-2">
-          <NavLink className="nav-link" activeClassName="no" to="/"> <FaBack /> </NavLink>
-        </li>
-        <li className="nav-item px-2">
-          <NavLink className="nav-link active" activeClassName="active" to="/todos"><FaTasks /> </NavLink>
-        </li>
-        <li className="nav-item px-2">
-          <NavLink className="nav-link" activeClassName="active" to="/logout"><FaLogout /> </NavLink>
-        </li>
-      </ul>
-      <ul className="nav nav-tabs mx-auto lg-header">
-        <li className="nav-item px-2">
-          <NavLink className="nav-link" activeClassName="no" to="/"> <FaBack /> </NavLink>
-        </li>
-        <li className="nav-item px-2">
-          <NavLink className="nav-link active" activeClassName="active" to="/todos"><FaTasks /> Todos </NavLink>
-        </li>
-        <li className="nav-item px-2">
-          <NavLink className="nav-link" activeClassName="active" to="/logout"><FaLogout /> Logout </NavLink>
-        </li>
-      </ul>
+      <TodoNav mediaQueryClass="lg-header" />
+      <TodoNav mediaQueryClass="sm-header" />
   </nav>
-  )
+  );
 }

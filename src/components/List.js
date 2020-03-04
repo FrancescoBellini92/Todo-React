@@ -3,42 +3,35 @@ import {Link} from 'react-router-dom';
 import { FaRemove, FaSave, FaTasks } from './Icons';
 
 
-export default function List ({name, id, updateList, updateListOnBackend, removeList}) {
-  return (
-    <li className="list-group-item bg-light">
-      <div className="input-group">
-        <input value={name} type="text" onChange={e => updateList(id, e.target.value)} className="form-control list-item"/>
-          <div className="input-group-append lg-btn">
-            <Link className="btn btn-secondary" to={{
-            pathname: `todos/list/${id}`,
-            state: {
-              name
-            }}}>
-                <FaTasks />
-            </Link>
-            <button onClick={() => updateListOnBackend(id, name)} className="btn btn-primary">
-                <FaSave />
-            </button>
-            <button onClick={removeList} className="btn btn-danger">
-              <FaRemove />
-            </button>
-          </div>
-      </div>
-      <div className="btn-group mt-1 float-right sm-btn">
-        <Link className="btn btn-sm btn-secondary" to={{
-            pathname: `todos/list/${id}`,
-            state: {
-              name
-            }}}>
+export default function List ({list, updateList, updateListOnBackend, removeList}) {
+
+  function ListBtns({containerClass}) {
+    const name = list.name;
+    return (   
+      <div className={containerClass}>
+        <Link className="btn btn-outline-secondary" to={{
+          pathname: `todos/list/${list.id}`,
+          state: {name}
+          }}>
             <FaTasks />
         </Link>
-        <button onClick={() => updateListOnBackend(id, name)}  className="btn btn-sm btn-primary">
+        <button onClick={() => updateListOnBackend(list.id, list.name)} className="btn btn-outline-primary">
             <FaSave />
         </button>
-        <button onClick={removeList} className="btn btn-sm btn-danger">
+        <button onClick={removeList} className="btn btn-outline-danger">
           <FaRemove />
         </button>
       </div>
+      );
+  }
+
+  return (
+    <li className="list-group-item">
+      <div className="input-group">
+        <input value={list.name} type="text" onChange={e => updateList(list.id, e.target.value)} className="form-control input-sm"/>
+          <ListBtns containerClass="input-group-append lg-btn" />
+      </div>
+      <ListBtns containerClass="btn-group mt-1 float-right sm-btn" />
     </li>
   );
 }

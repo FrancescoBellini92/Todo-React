@@ -71,7 +71,7 @@ export function TodoFooter ({ match, filter, listName}) {
             <FaFilter /> show all
           </NavLink>
         </div>
-        <div class="conainer sm-btn">
+        <div className="conainer sm-btn">
           <NavLink exact className={`btn btn-sm ${completedBtnClass} mx-2`}  to={{
             pathname: match.url,
             search: '?filter=completed',

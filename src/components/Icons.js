@@ -18,7 +18,6 @@ export const FaPlus = () => <FontAwesomeIcon icon={faPlusCircle} />;
 export const FaSearch = () => <FontAwesomeIcon icon={faSearch} />;
 export const FaFilter = () => <FontAwesomeIcon icon={faFilter} />; 
 
-
 export const FaSave = () => <FontAwesomeIcon icon={faSave} />; 
 
 export const FaList = () => <FontAwesomeIcon icon={faList} />;
