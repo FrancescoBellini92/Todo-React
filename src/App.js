@@ -13,14 +13,14 @@ import Logout from './components/Logout';
 export default function App () {
   return (
     <ErrorBoundary>
-          <Switch>
-            <PrivateRoute  path ="/search/todos/list/:list" component={TodoPageContainer}  />
-            <PrivateRoute  path ="/todos/list/:list" component={TodoPageContainer}  />
-            <PrivateRoute  path ="/search/:name" component={ListPageContainer} />
-            <Route  path ="/login" component={Login} />
-            <Route  path ="/logout" component={Logout} />
-            <PrivateRoute  path ="/" component={ListPageContainer} />
-          </Switch>
+      <Switch>
+        <PrivateRoute  path ="/search/todos/list/:list" component={TodoPageContainer}  />
+        <PrivateRoute  path ="/todos/list/:list" component={TodoPageContainer}  />
+        <PrivateRoute  path ="/search/:name" component={ListPageContainer} />
+        <Route  path ="/login" component={Login} />
+        <Route  path ="/logout" component={Logout} />
+        <PrivateRoute  path ="/" component={ListPageContainer} />
+      </Switch>
     </ErrorBoundary>
   );
 }

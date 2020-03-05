@@ -1,17 +1,17 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
-    faList, 
-    faTasks, 
-    faSignOutAlt, 
-    faPlusCircle, 
-    faSearch, 
-    faTrash, 
-    faCheck, 
-    faFilter,
-    faSave,
-    faSignInAlt,
-    faArrowLeft
+  faList, 
+  faTasks, 
+  faSignOutAlt, 
+  faPlusCircle, 
+  faSearch, 
+  faTrash, 
+  faCheck, 
+  faFilter,
+  faSave,
+  faSignInAlt,
+  faArrowLeft
 } from '@fortawesome/free-solid-svg-icons';
 
 export const FaPlus = () => <FontAwesomeIcon icon={faPlusCircle} />;

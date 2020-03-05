@@ -1,5 +1,6 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import PropTypes from 'prop-types';
+import  { Link } from 'react-router-dom';
 import { FaRemove, FaSave, FaTasks } from './Icons';
 
 
@@ -16,7 +17,7 @@ export default function List ({list, updateList, updateListOnBackend, removeList
             <FaTasks />
         </Link>
         <button onClick={() => updateListOnBackend(list.id, list.name)} className="btn btn-outline-primary">
-            <FaSave />
+          <FaSave />
         </button>
         <button onClick={removeList} className="btn btn-outline-danger">
           <FaRemove />
@@ -26,7 +27,7 @@ export default function List ({list, updateList, updateListOnBackend, removeList
   }
 
   return (
-    <li className="list-group-item">
+    <li className="list-group-item show">
       <div className="input-group">
         <input value={list.name} type="text" onChange={e => updateList(list.id, e.target.value)} className="form-control input-sm"/>
           <ListBtns containerClass="input-group-append lg-btn" />
@@ -35,3 +36,10 @@ export default function List ({list, updateList, updateListOnBackend, removeList
     </li>
   );
 }
+
+List.propTypes = {
+  list: PropTypes.object.isRequired,
+  updateList: PropTypes.func.isRequired,
+  updateListOnBackend: PropTypes.func.isRequired,
+  removeList: PropTypes.func.isRequired
+};

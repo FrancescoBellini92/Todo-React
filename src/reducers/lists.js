@@ -2,6 +2,8 @@ import { GET_LISTS, ADD_LIST, UPDATE_LIST, REMOVELIST } from '../actions/actionT
 
 export default function listReducer (state = [], action) {
   switch (action.type) {
+    case `${GET_LISTS}_PENDING`: 
+      return  []
     case `${GET_LISTS}_FULFILLED`: 
       return  action.payload.data.result.data;
     case `${ADD_LIST}_FULFILLED`:

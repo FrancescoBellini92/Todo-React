@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { NavLink}  from 'react-router-dom';
 import { FaList, FaTasks, FaLogout, FaBack } from './Icons';
 
@@ -55,4 +56,14 @@ export function TodosHeader() {
       <TodoNav mediaQueryClass="sm-header" />
   </nav>
   );
+}
+
+Nav.propTypes = {
+  activeClass: PropTypes.string,
+  to: PropTypes.string,
+  icon:PropTypes.object,
+  text: PropTypes.string
+}
+List.propTypes = {
+  mediaQueryClass: PropTypes.string
 }

@@ -17,41 +17,31 @@ import * as serviceWorker from './serviceWorker';
 
 import './index.css';
 
-function loadToDoList() {
-    if (localStorage.getItem('todoList')) {
-        const currentState = JSON.parse(localStorage.getItem('todoList'));
-        if (currentState.error.hasError) {
-            return([]) 
-        } 
-        return({...currentState});
-    }
-    return {
-        error: {
-            hasError: false, 
-            errorMessage: ''
-        }, 
-        todos: [], 
-        lists:[]
-    };
+function loadDefaultStore() {
+  return {
+    error: {
+      hasError: false, 
+      errorMessage: ''
+    }, 
+    todos: [], 
+    lists:[]
+  };
 }
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(storeReducer, loadToDoList(), 
-    composeEnhancers(applyMiddleware(logger, promise)));
-
-store.subscribe( () => {
-    if (!store.getState().error.hasError) {
-        localStorage.setItem('todoList', JSON.stringify(store.getState()));
-    }
-})
+const store = createStore( 
+  storeReducer, 
+  loadDefaultStore(), 
+  composeEnhancers(applyMiddleware(logger, promise))
+);
 
 ReactDOM.render(
 <Provider store={store}>
-    <UserProvider>
-        <BrowserRouter>
-            <App />
-        </BrowserRouter>
-    </UserProvider>
+  <UserProvider>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </UserProvider>
 </Provider>, 
 document.getElementById('root')
 );
