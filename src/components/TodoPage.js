@@ -1,10 +1,11 @@
 import React, {useEffect} from 'react';
+import {NavLink} from 'react-router-dom';
 import PropTypes from 'prop-types';
-
+import { FaFilter } from './Icons'
 import { TodosHeader} from './Header';
 import { TodoAdderContainer } from  '../containers/AdderContainer';
 import Todo from './Todo';
-import { TodoFooter } from '../components/Footer';
+import { Footer } from '../components/Footer';
 
 export default function TodoPage ({ todos, error, match, location, removeTodo, updateTodoInBackend, updateTodo, getTodo}) {
 
@@ -31,6 +32,51 @@ export default function TodoPage ({ todos, error, match, location, removeTodo, u
       );
     }
 
+    function TodoFooter () {
+      let completedBtnClass;
+      let pendingBtnClass;
+      let allBtnClass;
+    
+      completedBtnClass = pendingBtnClass = allBtnClass = 'btn-secondary';
+    
+      switch (filter) {
+        case 'completed':
+          completedBtnClass = 'btn-primary';
+          break;
+        case 'pending':
+          pendingBtnClass = 'btn-primary';
+          break;
+        default:
+          allBtnClass = 'btn-primary';
+      }
+    
+      return (
+            <div className="container">
+              <NavLink exact className={`btn btn-sm ${completedBtnClass} mx-2`}  to={{
+                pathname: match.url,
+                search: '?filter=completed',
+                state:{name:listName}
+              }}>
+                <FaFilter /> completed
+              </NavLink>
+              <NavLink exact className={`btn btn-sm ${pendingBtnClass} mx-2`} to={{
+                pathname: match.url,
+                search: '?filter=pending',
+                state: {name:listName}
+                }}>
+                <FaFilter /> pending
+              </NavLink>
+              <NavLink exact className={`btn btn-sm ${allBtnClass} mx-2`}  to={{
+                pathname: match.url,
+                state: {name:listName}
+                }}>
+                <FaFilter /> all
+              </NavLink>
+            </div>
+    
+      )
+    };
+
     const filter=getFilterFromQueryString(location.search);
     useEffect(() => {getTodo(match.params.list, filter)}, [filter]);
 
@@ -54,7 +100,9 @@ export default function TodoPage ({ todos, error, match, location, removeTodo, u
             </div>
             <TodoAdderContainer list={listId} />
             <Todos />
-            <TodoFooter match={match} listName={listName} filter={filter}/>
+            <Footer>
+              <TodoFooter/>
+            </Footer>
           </div>
         </>
       );

@@ -1,7 +1,3 @@
-/*
-Here we define the login component, that consume UserContext state by using the useContext hook
-*/
-
 import React, {useState, useContext} from 'react';
 import { NavLink } from 'react-router-dom';
 import { UserContext } from '../containers/UserContext';

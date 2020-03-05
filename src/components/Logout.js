@@ -1,7 +1,3 @@
-/*
-Here we define the logout component, that consume UserContext state by using useContext hook
-*/
-
 import {useEffect, useContext} from 'react';
 import {UserContext} from '../containers/UserContext';
 import Auth from '../auth/auth';
