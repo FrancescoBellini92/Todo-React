@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { FaFilter } from './Icons'
 import { TodosHeader} from './Header';
 import { TodoAdderContainer } from  '../containers/AdderContainer';
+import BaseList from './BaseList';
 import Todo from './Todo';
 import { Footer } from '../components/Footer';
 
@@ -99,7 +100,15 @@ export default function TodoPage ({ todos, error, match, location, removeTodo, u
               <h5>{listName}</h5>
             </div>
             <TodoAdderContainer list={listId} />
-            <Todos />
+            <BaseList>
+              {todos.map( (todo) => <Todo 
+                onComplete={() => updateTodoInBackend(todo,'1')} 
+                onUncompleteTodo={() => updateTodoInBackend(todo,'0')}
+                onUpdate={updateTodo} 
+                onSave={() => updateTodoInBackend(todo) } 
+                onRemove={ () => {removeTodo(todo.id)}} key={todo.id} todo={todo}/>)
+              }
+            </BaseList>
             <Footer>
               <TodoFooter/>
             </Footer>

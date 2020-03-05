@@ -3,6 +3,7 @@ import List from './List';
 import { NavLink } from 'react-router-dom';
 import { FaSearch } from './Icons';
 import { ListHeader } from './Header';
+import BaseList from './BaseList';
 import { ListAdderContainer } from '../containers/AdderContainer';
 import { Footer } from '../components/Footer';
 import { useEffect } from 'react';
@@ -11,14 +12,6 @@ export default function ListPage ({lists, getLists, updateList, updateListOnBack
     
     if (error.hasError) {
         throw new Error(error.errorMessage)
-    }
- 
-    function Lists () {
-        return (
-            <ul className="list-group mb-5 pb-5">
-                {lists.map((list) => <List key={list.id} list={list} updateListOnBackend={() => updateListOnBackend(list.id, list.name)} removeList= {() =>removeList(list.id)} name={list.name} id={list.id}/>)}
-            </ul>
-        );
     }
 
     function ListFooter () {
@@ -42,7 +35,15 @@ export default function ListPage ({lists, getLists, updateList, updateListOnBack
             <ListHeader />
             <div className="container list-container">
                 <ListAdderContainer  />
-                <Lists lists={lists} updateList={updateList} updateListOnBackend={updateListOnBackend} removeList={removeList} />
+                <BaseList>
+                    {lists.map(list => <List 
+                        key={list.id} list={list} 
+                        updateListOnBackend={() => updateListOnBackend(list.id, list.name)} 
+                        removeList= {() =>removeList(list.id)} 
+                        name={list.name} 
+                        id={list.id}/>)
+                    }
+                </BaseList>
                 <Footer>
                     <ListFooter />
                 </Footer>
