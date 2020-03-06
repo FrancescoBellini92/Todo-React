@@ -38,8 +38,8 @@ export default function ListPage ({lists, getLists, updateList, updateListOnBack
 				<DecoratedList array={lists}>
 					<BaseList>
 						{lists.map(list => <List 
-                key={list.id} list={list}
-                updateList={updateList}
+							key={list.id} list={list}
+							updateList={updateList}
 								updateListOnBackend={() => updateListOnBackend(list.id, list.name)} 
 								removeList= {() =>removeList(list.id)} 
 								name={list.name} 

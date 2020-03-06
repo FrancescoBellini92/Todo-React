@@ -67,7 +67,7 @@ export default function TodoPage ({todos, error, match, location, removeTodo, up
   };
 
   const filter=getFilterFromQueryString(location.search);
-  useEffect(() => {getTodo(match.params.list, filter)}, [filter]);
+  useEffect(() => {getTodo(match.params.list, filter)}, [match.params.list, filter]);
 
   const listId = match.params.list;
   if (!listId) {

@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 export default class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
@@ -22,7 +23,13 @@ export default class ErrorBoundary extends React.Component {
 
   render () {
     if (this.state.hasError) {
-      return (<div className="alert alert-danger text-center">An error emerged: {this.state.errorMessage}</div>);
+      return (
+        <div class="container h-100 align-items-center justify-content-center">
+        <div class="jumbotron round my-auto">
+          <h1 class="display-5">Something went wrong :( </h1>
+        </div>
+    </div>
+      );
     }
     return this.props.children;
   }
