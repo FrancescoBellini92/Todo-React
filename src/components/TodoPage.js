@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { FaFilter } from './Icons'
 import { TodosHeader} from './Header';
+import Main from './Main';
 import { TodoAdderContainer } from  '../containers/AdderContainer';
 import { BaseList, DecoratedList } from './BaseList';
 import Todo from './Todo';
@@ -83,7 +84,7 @@ export default function TodoPage ({todos, error, match, location, removeTodo, up
     return (
       <>
         <TodosHeader />
-        <div className="container">
+        <Main className="container">
           <div className="alert alert-primary text-center my-3">
             <h5>{listName}</h5>
           </div>
@@ -103,7 +104,7 @@ export default function TodoPage ({todos, error, match, location, removeTodo, up
           <Footer>
             <TodoFooter/>
           </Footer>
-        </div>
+        </Main>
       </>
     );
 }

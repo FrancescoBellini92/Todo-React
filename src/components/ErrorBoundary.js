@@ -24,10 +24,10 @@ export default class ErrorBoundary extends React.Component {
   render () {
     if (this.state.hasError) {
       return (
-        <div class="container h-100 align-items-center justify-content-center">
-        <div class="jumbotron round my-auto">
-          <h1 class="display-5">Something went wrong :( </h1>
-        </div>
+        <div class="container mt-5 pt-5 justify-content-center">
+        <div class="jumbotron mx-auto">
+          <h4 class="display-5 text-white">Something went wrong :(</h4>
+        </div> 
     </div>
       );
     }

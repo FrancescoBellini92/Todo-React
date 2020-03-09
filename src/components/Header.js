@@ -6,7 +6,7 @@ import { FaList, FaTasks, FaLogout, FaBack } from './Icons';
 function Nav ({activeClass, to, Icon, text}) {
   return (
     <li className="nav-item px-2">
-        <NavLink className="nav-link" activeClassName={activeClass} to={to}> <Icon /> {text} </NavLink>
+        <NavLink className="nav-link" activeClassName={activeClass} to={to} title={text} aria-label={text}> <Icon /> {text} </NavLink>
     </li>
   );
 }
@@ -17,6 +17,13 @@ function List ({mediaQueryClass, children}) {
       {children}
     </ul>
   );
+}
+
+function Header ({children}) {
+  return (
+  <header>
+    {children}
+  </header>)
 }
 
 export function ListHeader() {
@@ -31,10 +38,12 @@ export function ListHeader() {
   }
 
   return (
-    <nav className="navbar navbar-light bg-light">
-      <ListNav mediaQueryClass="lg-header" />
-      <ListNav mediaQueryClass="sm-header" />
-    </nav>
+    <Header>
+      <nav className="navbar navbar-light bg-light">
+        <ListNav mediaQueryClass="lg-header" />
+        <ListNav mediaQueryClass="sm-header" />
+      </nav>
+    </Header>
   );
 }
 
@@ -42,19 +51,21 @@ export function TodosHeader() {
 
   function TodoNav({mediaQueryClass}) {
     return (    
-      <List mediaQueryClass={mediaQueryClass}>
-        <Nav activeClass="no" to="/" Icon={FaBack} text="" />
-        <Nav activeClass="active" to="/todos" Icon={FaTasks} text="Tasks" />
-        <Nav activeClass="active" to="/logout" Icon={FaLogout} text="Logout" />
-      </List>
+        <List mediaQueryClass={mediaQueryClass}>
+          <Nav activeClass="no" to="/" Icon={FaBack} text="" />
+          <Nav activeClass="active" to="/todos" Icon={FaTasks} text="Tasks" />
+          <Nav activeClass="active" to="/logout" Icon={FaLogout} text="Logout" />
+        </List>
       );
   }
 
   return (
-    <nav className="navbar navbar-light bg-light">
-      <TodoNav mediaQueryClass="lg-header" />
-      <TodoNav mediaQueryClass="sm-header" />
-  </nav>
+    <Header>
+      <nav className="navbar navbar-light bg-light">
+        <TodoNav mediaQueryClass="lg-header" />
+        <TodoNav mediaQueryClass="sm-header" />
+      </nav>
+    </Header>
   );
 }
 

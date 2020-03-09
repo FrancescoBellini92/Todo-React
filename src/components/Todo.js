@@ -9,13 +9,13 @@ export default function Todo({onRemove, onUpdate, onSave, onComplete, onUncomple
   function TodoBtns({containerClass}) {
     return (   
       <div className={containerClass}>
-        <button className={`btn ${returnedClassCheck}`} onClick={todo.completed ? onUncompleteTodo : onComplete}>
+        <button aria-label="set as completed" title="set as completed" name="complete" className={`btn ${returnedClassCheck}`} onClick={todo.completed ? onUncompleteTodo : onComplete}>
           <FaCheck />
         </button>
-        <button className="btn btn-outline-primary" onClick={onSave}>
+        <button aria-label="save" title="save" name="save" className="btn btn-outline-primary" onClick={onSave}>
           <FaSave />
         </button>
-        <button className="btn btn-outline-danger" onClick={onRemove}>
+        <button aria-label="remove" title="remove" name="remove" className="btn btn-outline-danger" onClick={onRemove}>
           <FaRemove />
         </button> 
       </div>
@@ -25,7 +25,7 @@ export default function Todo({onRemove, onUpdate, onSave, onComplete, onUncomple
   return (
     <li className="list-group-item show">
       <div className="input-group mb-1">
-        <input className="form-control input-sm" type="text" value={todo.todo} onChange={e => onUpdate(todo.id, e.target.value)} />
+        <input className="form-control input-sm" type="text" aria-label="todo"  value={todo.todo} onChange={e => onUpdate(todo.id, e.target.value)} />
         <TodoBtns containerClass="input-group-append lg-btn"/>
       </div>
       <TodoBtns containerClass="btn-group float-right sm-btn" />
