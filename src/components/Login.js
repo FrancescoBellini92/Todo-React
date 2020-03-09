@@ -29,7 +29,7 @@ export default function Login(pars) {
       </nav>
       <form className="form-login container mt-5 mx-auto">
         <label htmlFor="inputEmail" className="sr-only">Email address</label>
-        <input type="email" id="inputEmail" className="form-control" placeHolder="troy18@example.org"
+        <input type="email" id="inputEmail" className="form-control" placeHolder="witting.jana@example.net"
           onChange={ e => setEmail(e.target.value)} autoFocus/>
         <label htmlFor="inputPassword" className="sr-only">Password</label>
         <input type="password" id="inputPassword" className="form-control mt-1" placeHolder="test" 
