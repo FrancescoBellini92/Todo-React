@@ -13,7 +13,9 @@ import storeReducer from './reducers/index';
 
 import { UserProvider } from './containers/UserContext';
 import App from './App';
+
 import * as serviceWorker from './serviceWorker';
+import 'bootstrap/dist/css/bootstrap.css';
 
 import './index.css';
 
@@ -46,4 +48,5 @@ ReactDOM.render(
 document.getElementById('root')
 );
 
-serviceWorker.unregister();
+serviceWorker.register();
+ 

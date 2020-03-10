@@ -39,7 +39,7 @@ export function ListHeader() {
 
   return (
     <Header>
-      <nav className="navbar navbar-light bg-light">
+      <nav className="navbar navbar-light bg-light fixed-top">
         <ListNav mediaQueryClass="lg-header" />
         <ListNav mediaQueryClass="sm-header" />
       </nav>
@@ -61,7 +61,7 @@ export function TodosHeader() {
 
   return (
     <Header>
-      <nav className="navbar navbar-light bg-light">
+      <nav className="navbar navbar-light bg-light fixed-top">
         <TodoNav mediaQueryClass="lg-header" />
         <TodoNav mediaQueryClass="sm-header" />
       </nav>
