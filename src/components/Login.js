@@ -29,10 +29,10 @@ export default function Login(pars) {
       </nav>
       <form className="form-login container mt-5 mx-auto">
         <label htmlFor="inputEmail" className="sr-only">Email address</label>
-        <input type="email" id="inputEmail" className="form-control" placeHolder="witting.jana@example.net"
+        <input type="email" id="inputEmail" className="form-control" placeholder="witting.jana@example.net"
           onChange={ e => setEmail(e.target.value)} autoFocus/>
         <label htmlFor="inputPassword" className="sr-only">Password</label>
-        <input type="password" id="inputPassword" className="form-control mt-1" placeHolder="test" 
+        <input type="password" id="inputPassword" className="form-control mt-1" placeholder="test" 
           onChange={ e => setPassword(e.target.value)} required/>
         <div className="container  justify-content-center">
           <button className="btn btn-lg btn-block btn-primary mt-2 " type="submit" onClick={loginAction}>
