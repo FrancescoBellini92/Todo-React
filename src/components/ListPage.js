@@ -35,7 +35,7 @@ export default function ListPage ({lists, getLists, updateList, updateListOnBack
 		<>
 			<ListHeader />
 			<Main >
-			<div className="container list-container">
+			<div className="container">
 				<ListAdderContainer  />
 				<DecoratedList array={lists}>
 					<BaseList>

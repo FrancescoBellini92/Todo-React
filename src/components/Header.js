@@ -21,8 +21,10 @@ function List ({mediaQueryClass, children}) {
 
 function Header ({children}) {
   return (
-  <header>
-    {children}
+  <header className="sticky-top">
+    <nav className="navbar navbar-light bg-light">
+      {children}
+    </nav>
   </header>)
 }
 
@@ -39,10 +41,8 @@ export function ListHeader() {
 
   return (
     <Header>
-      <nav className="navbar navbar-light bg-light fixed-top">
         <ListNav mediaQueryClass="lg-header" />
         <ListNav mediaQueryClass="sm-header" />
-      </nav>
     </Header>
   );
 }
@@ -61,10 +61,9 @@ export function TodosHeader() {
 
   return (
     <Header>
-      <nav className="navbar navbar-light bg-light fixed-top">
         <TodoNav mediaQueryClass="lg-header" />
         <TodoNav mediaQueryClass="sm-header" />
-      </nav>
+
     </Header>
   );
 }
