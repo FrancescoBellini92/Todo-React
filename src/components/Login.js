@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
+import {Container, Nav, ListGroup, InputGroup, FormControl, Form, Button} from 'react-bootstrap';
 import { UserContext } from '../containers/UserContext';
 import  { FaLogin } from './Icons';
 import Auth from '../auth/auth';
@@ -20,26 +21,26 @@ export default function Login(pars) {
 
   return (
     <>
-      <nav className="navbar navbar-light bg-light">
-        <ul className="nav nav-tabs mx-auto">
-          <li className="nav-item px-2">
+      <header className="navbar navbar-light bg-light">
+        <Nav variant="tabs" className=" mx-auto">
+          <Nav.Item className="px-2">
             <NavLink className="nav-link" activeClassName="active" to="/login">LOGIN</NavLink>
-          </li>
-        </ul>
-      </nav>
-      <form className="form-login container mt-5 mx-auto">
+          </Nav.Item >
+        </Nav>
+      </header>
+      <Form className="form-login mt-5 mx-auto">
         <label htmlFor="inputEmail" className="sr-only">Email address</label>
-        <input type="email" id="inputEmail" className="form-control" placeholder="witting.jana@example.net"
+        <FormControl type="email" id="inputEmail" placeholder="witting.jana@example.net"
           onChange={ e => setEmail(e.target.value)} autoFocus/>
         <label htmlFor="inputPassword" className="sr-only">Password</label>
-        <input type="password" id="inputPassword" className="form-control mt-1" placeholder="test" 
+        <FormControl type="password" id="inputPassword" className="mt-1" placeholder="test" 
           onChange={ e => setPassword(e.target.value)} required/>
-        <div className="container  justify-content-center">
-          <button className="btn btn-lg btn-block btn-primary mt-2 " type="submit" onClick={loginAction}>
+        <Container className="justify-content-center">
+          <Button variant="primary" className="btn-lg btn-block mt-2" type="submit" onClick={loginAction}>
             <FaLogin /> log in
-          </button>
-        </div>
-      </form>
+          </Button>
+        </Container>
+      </Form>
     </>
   );
 }

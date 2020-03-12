@@ -1,35 +1,36 @@
 import React from 'react';
+import { ListGroup, InputGroup, FormControl, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { FaCheck, FaSave, FaRemove } from './Icons';
 
 export default function Todo({onRemove, onUpdate, onSave, onComplete, onUncompleteTodo, todo}) {
   let returnedClassCheck ;
-  todo.completed ? returnedClassCheck = "btn-outline-success" : returnedClassCheck = "btn-outline-secondary";
+  todo.completed ? returnedClassCheck = "outline-success" : returnedClassCheck = "outline-secondary";
 
   function TodoBtns({containerClass}) {
     return (   
       <div className={containerClass}>
-        <button aria-label="set as completed" title="set as completed" name="complete" className={`btn ${returnedClassCheck}`} onClick={todo.completed ? onUncompleteTodo : onComplete}>
+        <Button aria-label="set as completed" title="set as completed" name="complete" variant={`${returnedClassCheck}`} onClick={todo.completed ? onUncompleteTodo : onComplete}>
           <FaCheck />
-        </button>
-        <button aria-label="save" title="save" name="save" className="btn btn-outline-primary" onClick={onSave}>
+        </Button>
+        <Button aria-label="save" title="save" name="save" variant="outline-primary" onClick={onSave}>
           <FaSave />
-        </button>
-        <button aria-label="remove" title="remove" name="remove" className="btn btn-outline-danger" onClick={onRemove}>
+        </Button>
+        <Button aria-label="remove" title="remove" name="remove" variant="outline-danger" onClick={onRemove}>
           <FaRemove />
-        </button> 
+        </Button> 
       </div>
       );
   }
 
   return (
-    <li className="list-group-item show">
-      <div className="input-group mb-1">
-        <input className="form-control input-sm" type="text" aria-label="todo"  value={todo.todo} onChange={e => onUpdate(todo.id, e.target.value)} />
+    <ListGroup.Item className="show">
+      <InputGroup className="mb-1">
+        <FormControl className="input-sm" type="text" aria-label="todo"  value={todo.todo} onChange={e => onUpdate(todo.id, e.target.value)} />
         <TodoBtns containerClass="input-group-append lg-btn"/>
-      </div>
+      </InputGroup>
       <TodoBtns containerClass="btn-group float-right sm-btn" />
-    </li>
+    </ListGroup.Item>
   );
 }
  

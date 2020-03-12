@@ -1,5 +1,7 @@
 import React, {useEffect} from 'react';
 import { NavLink } from 'react-router-dom';
+import Container from 'react-bootstrap/Container';
+import Alert from 'react-bootstrap/Alert';
 import PropTypes from 'prop-types';
 import { FaFilter } from './Icons'
 import { TodosHeader} from './Header';
@@ -41,13 +43,13 @@ export default function TodoPage ({todos, error, match, location, removeTodo, up
     }
   
     return (
-          <div className="container">
+          <Container>
             <NavLink exact className={`btn btn-sm ${completedBtnClass} mx-2`}  to={{
               pathname: match.url,
               search: '?filter=completed',
               state:{name:listName}
             }}>
-              <FaFilter /> completed
+              <FaFilter /> done
             </NavLink>
             <NavLink exact className={`btn btn-sm ${pendingBtnClass} mx-2`} to={{
               pathname: match.url,
@@ -62,7 +64,7 @@ export default function TodoPage ({todos, error, match, location, removeTodo, up
               }}>
               <FaFilter /> all
             </NavLink>
-          </div>
+          </Container>
   
     )
   };
@@ -73,11 +75,11 @@ export default function TodoPage ({todos, error, match, location, removeTodo, up
   const listId = match.params.list;
   if (!listId) {
     return (
-      <div className="container">
-        <div className="alert alert-primary text-center my-3">
+      <Container>
+        <Alert variant="primary" className="text-center my-3">
           <strong>Select a list to see its todos</strong>
-        </div>
-      </div>
+        </Alert>
+      </Container>
     );
   } 
   const listName = location.state ? location.state.name : null;
@@ -85,9 +87,9 @@ export default function TodoPage ({todos, error, match, location, removeTodo, up
       <>
         <TodosHeader />
         <Main className="container">
-          <div className="alert alert-primary text-center my-3">
-            <h5>{listName}</h5>
-          </div>
+        <Alert variant="primary" className="text-center my-3">
+          {listName}
+        </Alert>
           <TodoAdderContainer list={listId} />
           <DecoratedList array={todos}>
             <BaseList>

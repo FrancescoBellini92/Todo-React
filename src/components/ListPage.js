@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
+import { Container, InputGroup, FormControl } from 'react-bootstrap';
 import { FaSearch } from './Icons';
 import { ListHeader } from './Header';
 import Main from './Main';
@@ -18,14 +19,14 @@ export default function ListPage ({lists, getLists, updateList, updateListOnBack
 	function ListFooter () {
 		const [searchValue, setSearchValue] = useState('');
 		return (
-			<div className="input-group">
-				<input type="search" className="form-control" aria-label="search input" value={searchValue} onChange={e => setSearchValue(e.target.value)} placeholder="Search..." />
-				<div className="input-group-append">
+			<InputGroup>
+				<FormControl type="search" className="form-control" aria-label="search input" value={searchValue} onChange={e => setSearchValue(e.target.value)} placeholder="Search..." />
+				<InputGroup.Append>
 					<NavLink  className="btn btn-primary" title="search" to={`/search/${searchValue}`} aria-label="search">
 						<FaSearch />
 					</NavLink>
-				</div>
-			</div>
+				</InputGroup.Append>
+			</InputGroup>
 			)
 		};
 
@@ -35,7 +36,7 @@ export default function ListPage ({lists, getLists, updateList, updateListOnBack
 		<>
 			<ListHeader />
 			<Main >
-			<div className="container">
+			<Container>
 				<ListAdderContainer  />
 				<DecoratedList array={lists}>
 					<BaseList>
@@ -49,7 +50,7 @@ export default function ListPage ({lists, getLists, updateList, updateListOnBack
 						}
 					</BaseList>
 				</DecoratedList>
-				</div>
+				</Container>
 				</Main>
 				<Footer>
 					<ListFooter />

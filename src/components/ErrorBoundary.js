@@ -1,4 +1,5 @@
 import React from 'react';
+import { Container, Jumbotron } from 'react-bootstrap';
 
 
 export default class ErrorBoundary extends React.Component {
@@ -24,11 +25,11 @@ export default class ErrorBoundary extends React.Component {
   render () {
     if (this.state.hasError) {
       return (
-        <div class="container mt-5 pt-5 justify-content-center">
-        <div class="jumbotron mx-auto">
-          <h4 class="display-5 text-white">You are offline, please come back once you have restored your connection :)</h4>
-        </div> 
-    </div>
+      <Container className="mt-5 pt-5 justify-content-center">
+        <Jumbotron className="mx-auto">
+          <h4 className="display-5 text-white">You are offline, please come back once you have restored your connection :)</h4>
+        </Jumbotron> 
+      </Container>
       );
     }
     return this.props.children;

@@ -12,9 +12,10 @@
 }
 .jumbotron {
   max-width: 400px;
- background-color: rgb(157, 202, 232);
- box-shadow: 10px 10px 5px grey;
+  background-color: rgb(157, 202, 232);
+  box-shadow: 10px 10px 5px grey;
 }
+
 
 body {  
   margin: 0;
@@ -42,7 +43,7 @@ body {
   .sm-btn {
     display: block;
   }
-  li, h5 {
+  li, h5, .alert {
     font-size: 90%;
   }
 }

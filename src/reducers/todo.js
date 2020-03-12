@@ -10,7 +10,7 @@ import {
 export default function todoReducer (state = [], action) {
   switch (action.type) {
     case `${GET_TODO}_PENDING`: 
-      return [];
+      return ['pending'];
     case `${GET_TODO}_FULFILLED`: 
       return action.payload.data.result.data;
     case `${ADD_TODO}_FULFILLED`:

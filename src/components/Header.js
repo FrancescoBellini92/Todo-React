@@ -1,21 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink}  from 'react-router-dom';
+import BSNav from 'react-bootstrap/Nav';
+
 import { FaList, FaTasks, FaLogout, FaBack } from './Icons';
 
 function Nav ({activeClass, to, Icon, text}) {
   return (
-    <li className="nav-item px-2">
+    <BSNav.Item className="px-2">
         <NavLink className="nav-link" activeClassName={activeClass} to={to} title={text} aria-label={text}> <Icon /> {text} </NavLink>
-    </li>
+    </BSNav.Item>
   );
 }
 
 function List ({mediaQueryClass, children}) {
   return (
-    <ul className={`nav nav-tabs mx-auto ${mediaQueryClass}`}>
+    <BSNav variant="tabs" className={`mx-auto ${mediaQueryClass}`}>
       {children}
-    </ul>
+    </BSNav>
   );
 }
 
