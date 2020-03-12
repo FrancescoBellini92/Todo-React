@@ -26,7 +26,7 @@ export default class ErrorBoundary extends React.Component {
       return (
         <div class="container mt-5 pt-5 justify-content-center">
         <div class="jumbotron mx-auto">
-          <h4 class="display-5 text-white">You are offline, please come back once you have restored connectivity :)</h4>
+          <h4 class="display-5 text-white">You are offline, please come back once you have restored your connection :)</h4>
         </div> 
     </div>
       );
