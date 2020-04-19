@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
-import { Container, InputGroup, FormControl } from 'react-bootstrap';
-import { FaSearch } from './Icons';
-import { ListHeader } from './Header';
+import {NavLink} from 'react-router-dom';
+import {Container, InputGroup, FormControl} from 'react-bootstrap';
+import {FaSearch} from './Icons';
+import {ListHeader} from './Header';
 import Main from './Main';
-import { ListAdderContainer } from '../containers/AdderContainer';
-import {BaseList, DecoratedList } from './BaseList';
+import {ListAdderContainer} from '../containers/AdderContainer';
+import {BaseList, DecoratedList} from './BaseList';
 import List from './List';
-import { Footer } from '../components/Footer';
+import {Footer} from '../components/Footer';
 
 export default function ListPage ({lists, getLists, updateList, updateListOnBackend, removeList, error, match}) {
 

@@ -1,8 +1,8 @@
-import React, { useState, useContext } from 'react';
-import { NavLink } from 'react-router-dom';
-import {Container, Nav, ListGroup, InputGroup, FormControl, Form, Button} from 'react-bootstrap';
-import { UserContext } from '../containers/UserContext';
-import  { FaLogin } from './Icons';
+import React, {useState, useContext} from 'react';
+import {NavLink} from 'react-router-dom';
+import {Container, Nav, FormControl, Form, Button} from 'react-bootstrap';
+import {UserContext} from '../containers/UserContext';
+import  {FaLogin} from './Icons';
 import Auth from '../auth/auth';
 
 export default function Login(pars) {

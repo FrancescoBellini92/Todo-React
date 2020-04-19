@@ -1,4 +1,4 @@
-import React, { useState, createContext } from 'react';
+import React, {useState, createContext} from 'react';
 import Auth from '../auth/auth';
 
 export const UserContext = createContext(Auth.getUser());

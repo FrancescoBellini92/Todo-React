@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { APIAUTHURL } from '../config/config';
+import {APIAUTHURL} from '../config/config';
 
 function auth( ) {
   const getToken =  () => {
@@ -59,6 +59,7 @@ function auth( ) {
     logout,
     getUser
   }
+
 }
 
 const authMethods = auth();

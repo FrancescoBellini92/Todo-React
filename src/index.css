@@ -7,15 +7,21 @@
   }
 }
 
-.show {
-  animation: fadeIn 0.5s;
-}
-.jumbotron {
-  max-width: 400px;
-  background-color: rgb(157, 202, 232);
-  box-shadow: 10px 10px 5px grey;
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
+.fadeIn-show {
+  animation: fadeIn 0.5s;
+}
+.fadeOut{
+  animation: fadeOut 0.5s;
+}
 
 body {  
   margin: 0;
@@ -23,11 +29,17 @@ body {
   font-family:  "Helvetica Neue", sans-serif;
 }
 
+.jumbotron {
+  max-width: 400px;
+  background-color: rgb(157, 202, 232);
+  box-shadow: 10px 10px 5px grey;
+}
+
 .form-login {
   max-width: 400px;
 }
 
-.list-group, .adder-container, .alert {
+.list-group, .adder-container, .alert, form {
   max-width: 600px;
   margin: 0 auto;
 }
@@ -43,7 +55,7 @@ body {
   .sm-btn {
     display: block;
   }
-  li, h5, .alert {
+  li, h5, .alert, header {
     font-size: 90%;
   }
 }

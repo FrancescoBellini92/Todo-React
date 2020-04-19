@@ -1,6 +1,5 @@
 import React from 'react';
-import { Container, Jumbotron } from 'react-bootstrap';
-
+import {Container, Jumbotron} from 'react-bootstrap';
 
 export default class ErrorBoundary extends React.Component {
   constructor(props) {

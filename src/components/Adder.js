@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FaPlus } from './Icons'
+import {FaPlus} from './Icons'
 import {InputGroup, FormControl, Button} from 'react-bootstrap';
-
 
 export default function Adder({addFunc, list}) {
   let input;
   return (
-    <InputGroup className="my-2 adder-container show">
+    <InputGroup className="my-2 adder-container fadeIn-show">
       <FormControl aria-label="add input"  placeholder="Add..." ref={ node => {input = node}}
       onKeyUp={e => { if(e.keyCode === 13) {addFunc(input.value)}}} />
       <InputGroup.Append>

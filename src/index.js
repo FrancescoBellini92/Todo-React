@@ -1,17 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { createStore, applyMiddleware, compose } from 'redux';
+import {createStore, applyMiddleware, compose} from 'redux';
 import {Provider} from 'react-redux';
 
-import { BrowserRouter } from 'react-router-dom';
+import {BrowserRouter} from 'react-router-dom';
 
 import logger from 'redux-logger';
 import promise from 'redux-promise-middleware';
 
 import storeReducer from './reducers/index';
 
-import { UserProvider } from './containers/UserContext';
+import {UserProvider} from './containers/UserContext';
 import App from './App';
 
 import * as serviceWorker from './serviceWorker';

@@ -1,32 +1,51 @@
-import React from 'react';
-import { ListGroup, InputGroup, FormControl, Button } from 'react-bootstrap';
+import React, {useState} from 'react';
+import {Link} from 'react-router-dom';
+import {ListGroup, InputGroup,  FormControl, Button} from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import { FaCheck, FaSave, FaRemove } from './Icons';
+import {FaCheck, FaRemove, FaEdit} from './Icons';
 
 export default function Todo({onRemove, onUpdate, onSave, onComplete, onUncompleteTodo, todo}) {
-  let returnedClassCheck ;
-  todo.completed ? returnedClassCheck = "outline-success" : returnedClassCheck = "outline-secondary";
+  const [fadeOut, setFadeOut] = useState(false);
+  if (todo.deleted_at) {
+    return null;
+  }
 
+  let returnedClassCheck ;
+  todo.completed ? returnedClassCheck = "success" : returnedClassCheck = "outline-success";
+
+  
   function TodoBtns({containerClass}) {
     return (   
       <div className={containerClass}>
-        <Button aria-label="set as completed" title="set as completed" name="complete" variant={`${returnedClassCheck}`} onClick={todo.completed ? onUncompleteTodo : onComplete}>
-          <FaCheck />
+        <Button 
+          aria-label="set as completed" 
+          title="set as completed" 
+          name="complete" 
+          variant={`${returnedClassCheck}`} 
+          onClick={todo.completed ? onUncompleteTodo : onComplete}>
+            <FaCheck />
         </Button>
-        <Button aria-label="save" title="save" name="save" variant="outline-primary" onClick={onSave}>
-          <FaSave />
-        </Button>
-        <Button aria-label="remove" title="remove" name="remove" variant="outline-danger" onClick={onRemove}>
-          <FaRemove />
+        <Link className="btn btn-outline-primary" aria-label="info" title="info" name="info" to={{
+              pathname: `/details/${todo.id}` 
+              }}>
+          <FaEdit />
+        </Link>
+        <Button 
+          aria-label="remove" 
+          title="remove" 
+          name="remove" 
+          variant="outline-danger" 
+          onClick={() => {setFadeOut(true); onRemove();}}>
+            <FaRemove />
         </Button> 
       </div>
       );
   }
 
   return (
-    <ListGroup.Item className="show">
-      <InputGroup className="mb-1">
-        <FormControl className="input-sm" type="text" aria-label="todo"  value={todo.todo} onChange={e => onUpdate(todo.id, e.target.value)} />
+    <ListGroup.Item className="fadeIn-show">
+      <InputGroup  className="mb-1">
+        <FormControl className={`${fadeOut ? 'fadeOut' : ''}`} type="text" aria-label="todo"  value={todo.content} />
         <TodoBtns containerClass="input-group-append lg-btn"/>
       </InputGroup>
       <TodoBtns containerClass="btn-group float-right sm-btn" />
@@ -41,6 +60,6 @@ Todo.propTypes = {
   onUpdate: PropTypes.func.isRequired,
   todo: PropTypes.shape( {
     completed: PropTypes.number.isRequired,
-    todo: PropTypes.string.isRequired
+    content: PropTypes.string.isRequired
   })
 };

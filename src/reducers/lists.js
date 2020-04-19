@@ -1,4 +1,4 @@
-import { GET_LISTS, ADD_LIST, UPDATE_LIST, REMOVELIST } from '../actions/actionTypes';
+import {GET_LISTS, ADD_LIST, UPDATE_LIST, REMOVELIST} from '../actions/actionTypes';
 
 export default function listReducer (state = [], action) {
   switch (action.type) {

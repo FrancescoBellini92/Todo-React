@@ -1,5 +1,5 @@
-import { useEffect, useContext } from 'react';
-import { UserContext } from '../containers/UserContext';
+import {useEffect, useContext} from 'react';
+import {UserContext} from '../containers/UserContext';
 import Auth from '../auth/auth';
 
 export default function Logout (pars) {
