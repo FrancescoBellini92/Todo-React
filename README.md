@@ -3,7 +3,7 @@ This repository contains the front end for a todo list app, written in React.
 
 In this project I use React and a variety of third-part libraries (e.g., React-Redux, React-Router) to deepen my understanding of the React ecosystem
 
-For demo purposes, the db in the backend has been seeded with fake users and dummy "lorem-ipsum-like-data"
+For demo purposes, the db in the backend has been seeded with fake users and dummy data
 
 A live demo is available at https://todo-app--react.herokuapp.com/ with the following credentials:
 
