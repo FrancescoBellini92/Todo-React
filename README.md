@@ -1,19 +1,18 @@
-## Todo app with React & Laravel (React frontend) (work in progress)
-This repository contains the front end for a todo list app, written in React. 
+## Todo app with React
+This is a classical to-do app built for learning more advanced React and get familiar with the React ecosystem (e.g., React-Redux, React-Router).
 
-In this project I use React and a variety of third-part libraries (e.g., React-Redux, React-Router) to deepen my understanding of the React ecosystem
+App is deployed at https://todo-app--react.herokuapp.com/, and can be accessed with the following credentials:
 
-For demo purposes, the db in the backend has been seeded with fake users and dummy data
+- username: witting.jana@example.net
+- password: test
 
-A live demo is available at https://todo-app--react.herokuapp.com/ with the following credentials:
+## Dependencies
+Please refer to package.json for dependencies
 
-1) username: witting.jana@example.net
-   
-2) password: test
+## How to run
+1) clone the repo
+2) install all required dependencies with npm install
+3) run a development server with npm start
 
-## For cloning the repo
-After cloning the repository, run npm install to install all required dependencies.
-
-Running "npm start" will start the front end 
-
-
+# 
+NB: this project has all features completed, but it's still a little bit raw and needs refinement :)
