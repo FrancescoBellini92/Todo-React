@@ -15,4 +15,4 @@ Please refer to package.json for dependencies
 3) run a development server with npm start
 
 # 
-NB: this project has all features completed, but it's still a little bit raw and needs refinement :)
+PS: this project has all features completed, but it's still a little bit raw and needs refinement :)
